@@ -22,8 +22,14 @@ struct ContentView: View {
             .background(Color.white)
             .foregroundColor(.black)
             .clipShape(RoundedRectangle(cornerRadius: 20))
+            
+            Button("Hello Kitto"){
+                
+            }
+            .background(Color.white)
+            .foregroundColor(.black)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
         }
-        
     }
     /*var body: some View
     {
