@@ -1,7 +1,8 @@
 <h1 style="font-family: Times New Roman, serif;">Topic(1)- Society Sharing platform</h1>
 
 - Expand the chat platform into a "community sharing" platform: Users can not only chat but also initiate or organize item sharing (such as old books, old clothes, office equipment) or knowledge sharing (such as skill exchange, tutoring) activities.
-- <img width="1993" height="983" alt="image" src="https://github.com/user-attachments/assets/32776126-066b-49f1-976e-0c2aaaa4562b"/>
+<hr/>
+<img width="1993" height="983" alt="image" src="https://github.com/user-attachments/assets/32776126-066b-49f1-976e-0c2aaaa4562b"/>
 
 ---
 <h2 style="font-family: Times New Roman, serif;"><i>Function:</i></h2>
