@@ -1,4 +1,4 @@
-<h1 style="font-family: Times New Roman, serif;">Topic(1)- Society Sharing platform</h1>
+<h1 style="font-family: Times New Roman, serif;">Topic - Society Sharing platform</h1>
 
 - Expand the chat platform into a "community sharing" platform: Users can not only chat but also initiate or organize item sharing (such as old books, old clothes, office equipment) or knowledge sharing (such as skill exchange, tutoring) activities.
 <hr/>
