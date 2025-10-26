@@ -9,12 +9,10 @@ export default function Home() {
   const handleClick = () =>{
     navigate('/')
   }
-  function clothesFinder(){
-
-}
-function onSearchFormChange(event){
-  setClothes(event.target.value)
-}
+  
+  function onSearchFormChange(event){
+    setClothes(event.target.value)
+  }
 
   return(
     
@@ -27,21 +25,21 @@ function onSearchFormChange(event){
       onChange={e => setSelectedValue(e.target.value)}
       className="my-custom-select"
       >
-      <option value="">Select your sustainable plan</option>
-      <option value="exchangeProduct">Product exchange</option>
-      <option value="books">Books Exchange</option>
-      <option value="books">Clothes Exchange</option>
+      <option value="">Select your exchanging plan</option>
+      <option value="exchangeProduct">Products </option>
+      <option value="books">Books </option>
+      <option value="Clothes">Clothes </option>
       <option value="chat">Chatting Channel</option>
-      <option value="edu">Reels</option> //Education of Sustainability
+      <option value="edu">Reels</option> 
     </select>
       <br/>
       
       <Back handleClick = {handleClick}/>
       <br/>
-      <h2>You can search the {clothes} category here!</h2>
+      <h2>You can search the <u><i>{clothes}</i></u> category here!</h2>
       <input onChange = {onSearchFormChange} type = 'text'></input>
       
-      <Data/>
+      <Data searchFilter = {clothes}/>
       
  </div>
     
@@ -56,12 +54,11 @@ function onSearchFormChange(event){
     )
   }
 
-  function Data() {
+  function Data({searchFilter}) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-
+  const filterClothes = data.filter(item => item.sub_category.toLowerCase().includes(searchFilter.toLowerCase()))
 
   useEffect(() => {
     const URL = "https://raw.githubusercontent.com/Hajime-No-Ippo/MOBILE_APPLICATION_DEVELOPMENT/main/archive/productDataSet.json"
@@ -90,7 +87,8 @@ function onSearchFormChange(event){
   } else if (loading) {
     return <h1>Loading Data… please wait!</h1>;
   } else {
-    return <ResultsComponent APIData={data} />;
+    return <ResultsComponent APIData={filterClothes}
+     />;
   }
 }
 
@@ -105,12 +103,12 @@ return(
   <table border = "1">
   <thead>
     <tr>
-      <th>Product Name</th>
-      <th>Status</th>
-      <th>Exchanging Date</th>
-      <th>Category</th>
-      <th>Rating</th>
-      <th>Seller</th>
+      <th><h3>Product Name</h3></th>
+      <th><h3>Saled?</h3></th>
+      <th><h3>Exchanging Date</h3></th>
+      <th><h3>Category</h3></th>
+      <th><h3>Rating</h3></th>
+      <th><h3>Seller</h3></th>
     </tr>
   </thead>
   <tbody>
