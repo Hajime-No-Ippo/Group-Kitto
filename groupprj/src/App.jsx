@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from './loginPage.jsx/page.jsx';
-import Menu from './AppMenu/menu.jsx';
-import Clothes from './AppMenu/clothes.jsx';
-import Home from './home.jsx';
-import { Chatbox } from "./chatBox/Chatbox.jsx";
+import LoginPage from './pages/loginPage.jsx';
+import Menu from './pages/menu.jsx';
+import Clothes from './pages/clothes.jsx';
+import Home from './pages/home.jsx';
+import { Chatbox } from "./pages/Chatbox.jsx";
 
 
 import './App.css'
