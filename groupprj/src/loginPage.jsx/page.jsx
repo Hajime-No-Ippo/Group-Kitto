@@ -34,8 +34,6 @@ return(
      
       <LoginToMenu loginToMenu = {loginToMenu}/>
       <br/>
-      
-        
         <sbt type = "submit">
           Collecting on accepting all GDPR conditions
         </sbt>
