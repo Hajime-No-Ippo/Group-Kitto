@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style/menu.css'
+import '../style/menu.css'
 
 export default function Home() {
   const [selectedValue, setSelectedValue] = useState("")

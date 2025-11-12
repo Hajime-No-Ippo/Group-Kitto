@@ -4,6 +4,8 @@ import Menu from './pages/menu.jsx';
 import Clothes from './pages/clothes.jsx';
 import Home from './pages/home.jsx';
 import { Chatbox } from "./pages/Chatbox.jsx";
+import Nav from './component/nav.jsx';
+import Products from "./Data/ProductData.js";
 
 
 import './App.css'
@@ -11,6 +13,11 @@ import './App.css'
 export default function App() {
 
  return(
+  
+  <>
+      <Nav />
+
+  
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -24,6 +31,7 @@ export default function App() {
         <Route path="/books" element={<Menu />} />
       </Routes>
     </BrowserRouter>
+    </>
  )
 }
 

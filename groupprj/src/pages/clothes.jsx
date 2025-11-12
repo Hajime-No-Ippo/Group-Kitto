@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Data from "../Data/clothesData";
 import { useNavigate } from 'react-router-dom';
-import "./style/clothes.css";
+import "../style/clothes.css";
 
 export default function clothes(){
     const [clothes, setClothes] = useState("clothes")
