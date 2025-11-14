@@ -5,18 +5,18 @@
 <img width="1993" height="983" alt="image" src="https://github.com/user-attachments/assets/32776126-066b-49f1-976e-0c2aaaa4562b"/>
 
 ---
+
 <h2 style="font-family: Times New Roman, serif;"><i>Function:</i></h2>
 
-How many ***FUNCTIONS*** do we need for our APP:
+How many **_FUNCTIONS_** do we need for our APP:
 
 **Main Function**
 
-- Users can start a <u><b>"share post"</b></u>: describe the item/service - where/when/exchangeable conditions 
+- Users can start a <u><b>"share post"</b></u>: describe the item/service - where/when/exchangeable conditions
 
 - 1 differentiated function: <b><u>quick photo uploading + automatic recognition of categories</u></b> (calling a simple image recognition API)
 
-- 2 ordinary functions: only two pages, <b><u>home is search (sorted by distance)</u></b>, my profile (equivalent to mine) 
-
+- 2 ordinary functions: only two pages, <b><u>home is search (sorted by distance)</u></b>, my profile (equivalent to mine)
 
 **Selective Function**
 
@@ -28,19 +28,19 @@ How many ***FUNCTIONS*** do we need for our APP:
 
 - Publish/subscribe to <b><u>real-time notifications</u></b> with Redis: such as "A user is interested in your sharing request"
 
-
 ---
+
 <h2 style="font-family: Times New Roman, serif;"><i>Sustainable value points:</i></h2>
 <p><b>Maximize the utilization rate of goods/knowledge resources, reduce waste, and promote recycling.</b></p>
 
 <href><b>Sample:</b> https://www.adverts.ie/</href>
 
- ***Derivative method:*** 
+**_Derivative method:_**
 
-- The original chat module is of vital importance; 
+- The original chat module is of vital importance;
 
 - Add a <b><u>shared task module</u></b> and a pairing mechanism on its upper layer; A shared UI has been added to the front end.
-Why more "sustainable" : The shift from "instant messaging" to "resource recycling + community mutual assistance" represents a deeper level of social sustainability.
+  Why more "sustainable" : The shift from "instant messaging" to "resource recycling + community mutual assistance" represents a deeper level of social sustainability.
 
 ---
 
@@ -50,3 +50,5 @@ Why more "sustainable" : The shift from "instant messaging" to "resource recycli
 •	Implemented <b><u>user authentication</u></b>, <b><u>quick photo uploading function</u></b> and offline message caching</br>
 •	Employed Redis pub/sub or message queues to handle concurrent messaging, maintaining response latency under 100 ms
 </p>
+
+// test by Riley
