@@ -18,8 +18,8 @@ function LoginPage() {
 
   return (
     <div
-      className="container d-flex justify-content-center align-items-center"
-      style={{ height: "100vh" }}
+      className="container-fluid d-flex justify-content-center align-items-center"
+      style={{ height: "100vh", width: "1400px", backgroundColor: "#c8e3ffff" }}
     >
       <div className="card p-4 shadow" style={{ width: "380px" }}>
         <h2 className="text-center mb-3">Welcome to Kitto Market</h2>

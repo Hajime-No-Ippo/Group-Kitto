@@ -3,6 +3,10 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Nav = () => {
+  const handleOnclick = (e) => {
+    e.preventDefault();
+    window.location.href = "/userProfile";
+  };
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
       {/* Logo - click this logo always go to home */}
@@ -11,7 +15,7 @@ const Nav = () => {
       </a>
 
       {/* Right side button */}
-      <a className="btn btn-outline-light" href="/profile">
+      <a className="btn btn-outline-light" href="/profile" onClick={handleOnclick}>
         My Profile
       </a>
     </nav>
