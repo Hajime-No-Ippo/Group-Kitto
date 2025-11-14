@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useParams } from "react-router-dom";
 import Products from '../Data/ProductData'
 import MyCart from '../component/MyCart'
 import ProductInfo from '../component/ProductInfo'
@@ -10,27 +11,31 @@ import CommentList from '../component/CommentList'
 */
  
 export const ProductDetail = () => {
-      useState([cart, setCart]);
-      useState([Comments, setComments]);
+    const { id } = useParams();
+    const [cart, setCart] = useState([]);
+    const [Comments, setComments] = useState([]);
+
+    const product = Products.find((item) => item.id === parseInt(id));
 
     const addToCart = (item) => {
         setCart([...cart, item]);
-        alert('${item.name} added to cart!');
+        alert(`${item.name} added to cart!`);
     }
 
     const handleComments = (newComment) => {
         setComments([...Comments, newComment]);
     }
 
-    const sumAllItems = Cart.reduce((a, b) => a + b.price, 0);
+    const sumAllItems = cart.reduce((a, b) => a + b.price, 0);
 
-    const clearCart = () => setCartItems([]);
+    const clearCart = () => setCart([]);
 
     
   return (
     <>
       <ProductInfo 
-        açddToCart = {addToCart}
+        product = {product}
+        addToCart = {addToCart}
         />
       <MyCart 
         cart = {cart}
@@ -49,3 +54,4 @@ export const ProductDetail = () => {
     </>
   )
 }
+export default ProductDetail

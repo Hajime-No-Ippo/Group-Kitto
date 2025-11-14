@@ -1,4 +1,4 @@
-import React, { useState } from 'propreact'
+import React, { useState } from 'react'
 
 const MyCart = (props) => {
   return (

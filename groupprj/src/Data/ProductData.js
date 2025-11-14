@@ -1,37 +1,114 @@
 const Products = [
-    {
-        id: 1,
-        name: "Eco-friendly Water Bottle",
-        description: "A reusable water bottle made from sustainable materials.",
-        seller: "EcoWarrior",
-        category: "Home & Kitchen",
-        price: 15.99,
-        condition: "Like New",
-        exchangeFor: "Reusable shopping bags",
-        img: ["public/img/bottle-black-eco.jpg", "public/img/bottle-blue-eco.jpg"]
-    },
-    {
-        id: 2,
-        name: "Vintage Vinyl Record",
-        description: "A classic vinyl record from the 70s in excellent condition.",
-        seller: "JohnDoe123",
-        category: "Music & Entertainment",
-        price: 25.00,
-        condition: "Very Good",
-        exchangeFor: "Other vinyl records",
-        img: "public/img/vintage-recorder.jpg"
-    },
-    {
-        id: 3,
-        name: "Handmade Ceramic Mug",
-        description: "A unique ceramic mug handcrafted by local artisans.",
-        seller: "CraftyHands",
-        category: "Home & Kitchen",
-        price: 12.50,
-        condition: "New",
-        exchangeFor: "Handmade coasters",
-        img: "public/img/ceramic-handmade-mug.jpg"
-    }
+  {
+    id: 1,
+    name: "Vintage Jacket",
+    description: "Classic denim jacket with a timeless 90s look, perfect for layering or casual wear.",
+    seller: "RetroVibes",
+    category: "Fashion & Apparel",
+    price: 45.0,
+    condition: "Good",
+    exchangeFor: "Casual hoodie",
+    img: ["/img/vintage-jacket.jpg"]
+  },
+  {
+    id: 2,
+    name: "Sneakers",
+    description: "Lightweight sneakers made with breathable fabric and recycled rubber soles.",
+    seller: "RunEarth",
+    category: "Fashion & Footwear",
+    price: 35.5,
+    condition: "Like New",
+    exchangeFor: "Gym backpack",
+    img: ["/img/sneakers.jpg"]
+  },
+  {
+    id: 3,
+    name: "Backpack",
+    description: "Durable canvas backpack with laptop compartment and water-resistant coating.",
+    seller: "UrbanNomad",
+    category: "Travel & Outdoors",
+    price: 40.0,
+    condition: "New",
+    exchangeFor: "Tote bag",
+    img: ["/img/black-backpack.jpg"]
+  },
+  {
+    id: 4,
+    name: "Handmade Mug",
+    description: "Handcrafted ceramic mug with unique glaze finish and ergonomic handle.",
+    seller: "CraftyHands",
+    category: "Home & Kitchen",
+    price: 12.5,
+    condition: "New",
+    exchangeFor: "Handmade coasters",
+    img: ["/img/ceramic-handmade-mug.jpg"]
+  },
+  {
+    id: 5,
+    name: "Laptop Stand",
+    description: "Aluminum adjustable stand to elevate your laptop and improve posture.",
+    seller: "TechGuru",
+    category: "Electronics",
+    price: 22.0,
+    condition: "Used - Good",
+    exchangeFor: "Wireless mouse",
+    img: ["/img/laptop-stand.jpg"]
+  },
+  {
+    id: 6,
+    name: "Desk Lamp",
+    description: "Energy-efficient LED desk lamp with a minimalist design and soft warm light.",
+    seller: "LightCraft",
+    category: "Office & Decor",
+    price: 18.99,
+    condition: "Like New",
+    exchangeFor: "Small indoor plant",
+    img: ["/img/desk-lamp.jpg"]
+  },
+  {
+    id: 7,
+    name: "Headphones",
+    description: "Studio-grade over-ear headphones with crystal-clear sound and deep bass.",
+    seller: "SoundWave",
+    category: "Electronics",
+    price: 75.0,
+    condition: "Like New",
+    exchangeFor: "Bluetooth speakers",
+    img: ["/img/headphones.jpg"]
+  },
+  {
+    id: 8,
+    name: "Chair",
+    description: "Modern handcrafted wooden chair made from solid oak, finished with natural oil.",
+    seller: "WoodWorkShop",
+    category: "Furniture",
+    price: 60.0,
+    condition: "New",
+    exchangeFor: "Coffee table",
+    img: ["/img/chair.jpg"]
+  },
+  {
+    id: 9,
+    name: "Bottle",
+    description: "Eco-friendly stainless steel water bottle with double-wall insulation.",
+    seller: "EcoWarrior",
+    category: "Home & Kitchen",
+    price: 15.99,
+    condition: "Like New",
+    exchangeFor: "Reusable cups",
+    img: ["/img/bottle-black-eco.jpg"]
+  },
+  {
+    id: 10,
+    name: "Tote Bag",
+    description: "Large, durable tote bag made from 100% organic cotton. Perfect for groceries or daily use.",
+    seller: "EcoTrend",
+    category: "Fashion & Accessories",
+    price: 14.0,
+    condition: "New",
+    exchangeFor: "Storage baskets",
+    img: ["/img/tote-bag.jpg"]
+  }
 ];
 
 export default Products;

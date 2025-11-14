@@ -4,6 +4,7 @@ import Menu from "./pages/menu.jsx";
 import Clothes from "./pages/clothes.jsx";
 import Home from "./pages/home.jsx";
 import { Chatbox } from "./pages/Chatbox.jsx";
+import ProductDetail from "./pages/ProductDetail";
 
 import Nav from "./component/nav.jsx";
 
@@ -16,6 +17,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/home" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/chat" element={<Chatbox />} />
