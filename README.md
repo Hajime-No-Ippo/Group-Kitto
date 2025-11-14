@@ -50,5 +50,3 @@ How many **_FUNCTIONS_** do we need for our APP:
 •	Implemented <b><u>user authentication</u></b>, <b><u>quick photo uploading function</u></b> and offline message caching</br>
 •	Employed Redis pub/sub or message queues to handle concurrent messaging, maintaining response latency under 100 ms
 </p>
-
-// test by Riley

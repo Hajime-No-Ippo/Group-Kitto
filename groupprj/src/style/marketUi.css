@@ -3,29 +3,27 @@
 ============================== */
 
 :root {
-  --brand-primary: #ff7a00; /* Warm orange: main UI color */
-  --brand-secondary: #245953; /* Deep green: highlight and CTAs */
-  --background: #f7f7f7; /* Soft neutral background */
-  --text-dark: #2b2b2b; /* Headings */
-  --text-light: #6b6b6b; /* Secondary text */
+  --brand-primary: #245953;
+  --brand-secondary: #245953;
+  --background: #f7f7f7;
+  --text-dark: #2b2b2b;
+  --text-light: #6b6b6b;
   --card-shadow: rgba(0, 0, 0, 0.1);
 }
 
-/* Page background + typography */
 body {
   background-color: var(--background);
   font-family: "Inter", "Segoe UI", sans-serif;
   color: var(--text-dark);
 }
 
-/* Layout spacing */
 .container {
   max-width: 1400px;
   padding-top: 25px;
 }
 
 /* ==============================
-   🧩 HEADINGS
+   HEADINGS
 ============================== */
 
 h3,
@@ -36,7 +34,7 @@ h4 {
 }
 
 /* ==============================
-   🔍 SEARCH BAR
+   SEARCH BAR
 ============================== */
 
 .input-group {
@@ -52,21 +50,33 @@ h4 {
   border: 1px solid #ddd;
 }
 
+/* --- Unified button style (Search + Post button) --- */
+.btn-success,
 .input-group button {
-  border-radius: 0 30px 30px 0 !important;
+  border-radius: 30px;
+  background-color: #0e3a35;
+  color: white;
   font-weight: 600;
-  background-color: var(--brand-primary);
   border: none;
   height: 50px;
-  color: white;
+  padding: 0 24px;
+  transition: background-color 0.25s ease, transform 0.15s ease;
 }
 
+.btn-success:hover,
 .input-group button:hover {
-  background-color: #e56c00;
+  background-color: #1e4b46;
+  transform: translateY(-2px);
+}
+
+.btn-success:active,
+.input-group button:active {
+  background-color: #0c2e2a;
+  transform: scale(0.97);
 }
 
 /* ==============================
-   🛍 PRODUCT CARDS
+   PRODUCT CARDS
 ============================== */
 
 .clickable-card {
@@ -84,43 +94,23 @@ h4 {
   box-shadow: 0 14px 28px var(--card-shadow);
 }
 
-/* product images keep good shape */
 .clickable-card img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-/* Name text */
+/* Fix product label text wrapping */
 .card-body p {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-dark);
+  white-space: nowrap;
+  overflow: visible;
 }
 
 /* ==============================
-   🎛 BUTTONS (Brand Style)
-============================== */
-
-.btn-success {
-  border-radius: 30px;
-  font-weight: 600;
-  padding: 10px 20px;
-  background-color: var(--brand-secondary);
-  border: none;
-}
-
-.btn-success:hover {
-  background-color: #1e4b46;
-}
-
-.btn-outline-secondary {
-  border-radius: 25px;
-  color: var(--text-light);
-}
-
-/* ==============================
-   ❌ NO SEARCH RESULT STYLE
+   NO RESULTS MESSAGE
 ============================== */
 
 .no-results-message {
@@ -130,14 +120,4 @@ h4 {
   color: var(--brand-secondary);
   margin-top: 30px;
   opacity: 0.9;
-}
-
-/* ==============================
-   📱 RESPONSIVE TUNE
-============================== */
-
-@media (min-width: 1200px) {
-  .clickable-card img {
-    aspect-ratio: 1 / 1;
-  }
 }
