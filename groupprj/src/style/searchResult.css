@@ -1,0 +1,9 @@
+/* Shared clickable card style */
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+}
+
+.clickable-card:hover {
+  transform: scale(1.04);
+}

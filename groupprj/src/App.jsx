@@ -5,6 +5,7 @@ import Clothes from "./pages/clothes.jsx";
 import Home from "./pages/home.jsx";
 import { Chatbox } from "./pages/Chatbox.jsx";
 import ProductDetail from "./pages/ProductDetail";
+import SearchResult from "./pages/SearchResult.jsx";
 
 import Nav from "./component/nav.jsx";
 
@@ -19,6 +20,8 @@ export default function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/search" element={<SearchResult />} />
+
         <Route path="/menu" element={<Menu />} />
         <Route path="/chat" element={<Chatbox />} />
         <Route path="/exchangeProduct" element={<Menu />} />

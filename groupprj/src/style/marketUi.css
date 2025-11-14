@@ -1,0 +1,143 @@
+/* ==============================
+   🌿 GLOBAL THEME
+============================== */
+
+:root {
+  --brand-primary: #ff7a00; /* Warm orange: main UI color */
+  --brand-secondary: #245953; /* Deep green: highlight and CTAs */
+  --background: #f7f7f7; /* Soft neutral background */
+  --text-dark: #2b2b2b; /* Headings */
+  --text-light: #6b6b6b; /* Secondary text */
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Page background + typography */
+body {
+  background-color: var(--background);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: var(--text-dark);
+}
+
+/* Layout spacing */
+.container {
+  max-width: 1400px;
+  padding-top: 25px;
+}
+
+/* ==============================
+   🧩 HEADINGS
+============================== */
+
+h3,
+h4 {
+  font-weight: 650;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+/* ==============================
+   🔍 SEARCH BAR
+============================== */
+
+.input-group {
+  max-width: 700px;
+  margin: auto;
+}
+
+.input-group input {
+  border-radius: 30px 0 0 30px !important;
+  padding-left: 20px;
+  font-size: 16px;
+  height: 50px;
+  border: 1px solid #ddd;
+}
+
+.input-group button {
+  border-radius: 0 30px 30px 0 !important;
+  font-weight: 600;
+  background-color: var(--brand-primary);
+  border: none;
+  height: 50px;
+  color: white;
+}
+
+.input-group button:hover {
+  background-color: #e56c00;
+}
+
+/* ==============================
+   🛍 PRODUCT CARDS
+============================== */
+
+.clickable-card {
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: white;
+  transition: all 0.25s ease;
+  border: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.clickable-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px var(--card-shadow);
+}
+
+/* product images keep good shape */
+.clickable-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Name text */
+.card-body p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* ==============================
+   🎛 BUTTONS (Brand Style)
+============================== */
+
+.btn-success {
+  border-radius: 30px;
+  font-weight: 600;
+  padding: 10px 20px;
+  background-color: var(--brand-secondary);
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #1e4b46;
+}
+
+.btn-outline-secondary {
+  border-radius: 25px;
+  color: var(--text-light);
+}
+
+/* ==============================
+   ❌ NO SEARCH RESULT STYLE
+============================== */
+
+.no-results-message {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--brand-secondary);
+  margin-top: 30px;
+  opacity: 0.9;
+}
+
+/* ==============================
+   📱 RESPONSIVE TUNE
+============================== */
+
+@media (min-width: 1200px) {
+  .clickable-card img {
+    aspect-ratio: 1 / 1;
+  }
+}
