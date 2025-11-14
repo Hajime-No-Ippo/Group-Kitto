@@ -15,14 +15,12 @@ export default function App() {
       <Nav />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/chat" element={<Chatbox />} />
         <Route path="/exchangeProduct" element={<Menu />} />
         <Route path="/clothes" element={<Clothes />} />
-        <Route path="/edu" element={<Menu />} />
-        <Route path="/books" element={<Menu />} />
       </Routes>
     </BrowserRouter>
   );

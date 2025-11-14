@@ -6,7 +6,7 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
       {/* Logo - click this logo always go to home */}
-      <a className="navbar-brand fw-bold" href="/">
+      <a className="navbar-brand fw-bold" href="/home">
         Kitto Market
       </a>
 
