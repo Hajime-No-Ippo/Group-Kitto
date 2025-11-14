@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Data from "../Data/clothesData";
+import Data from "../component/clothesData";
 import { useNavigate } from 'react-router-dom';
 import "../style/clothes.css";
 
