@@ -1,21 +1,21 @@
-import React from 'react'
-import '../style/nav.module.css'
+// src/component/nav.jsx
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const Nav = () => {
   return (
-    <div>
-        <div className = 'header' >
-            <div className = 'logo'>
-                <h2>Kit<span>To</span></h2>
-                </div>
-                <ul>
-                    <li><a href='#'>Home</a></li>
-                    <li><a href='#'>Product</a></li>
-                    <li><a href='#'>About</a></li>
-                    <li><a href='#'>My Profile</a></li>
-                </ul>
-            </div>
-    </div>
-  )
-}
+    <nav className="navbar navbar-dark bg-dark px-4">
+      {/* Logo - click this logo always go to home */}
+      <a className="navbar-brand fw-bold" href="/">
+        Kitto Market
+      </a>
 
-export default Nav
+      {/* Right side button */}
+      <a className="btn btn-outline-light" href="/profile">
+        My Profile
+      </a>
+    </nav>
+  );
+};
+
+export default Nav;
