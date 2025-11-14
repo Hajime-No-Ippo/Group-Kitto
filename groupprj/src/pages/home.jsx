@@ -31,7 +31,7 @@ export default function Home() {
       <div className="mb-4">
         <button
           className="btn btn-success px-4 py-2"
-          onClick={() => navigate("/post")}
+          onClick={() => navigate("/addItem")}
         >
           + Post New Item
         </button>

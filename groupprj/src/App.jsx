@@ -6,6 +6,7 @@ import Home from "./pages/home.jsx";
 import { Chatbox } from "./pages/Chatbox.jsx";
 import ProductDetail from "./pages/ProductDetail";
 import SearchResult from "./pages/SearchResult.jsx";
+import AddItem from "./pages/AddItem.jsx"
 
 import Nav from "./component/nav.jsx";
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/chat" element={<Chatbox />} />
         <Route path="/exchangeProduct" element={<Menu />} />
         <Route path="/clothes" element={<Clothes />} />
+        <Route path="/addItem" element={<AddItem />} />
       </Routes>
     </BrowserRouter>
   );
