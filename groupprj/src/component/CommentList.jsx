@@ -3,18 +3,8 @@ import React, { useState } from 'react'
 const CommentList = (props) => {
   return (
     <div>Comments:
+      
         <h2>Customer Reviews:</h2>
-        <div className='comments-container'>
-            {props.Comments.length === 0 ? (
-                <p>No comments available</p>
-            ) : (
-                props.Comments.map((comment, index) => (
-                    <div key={index} className='comment-item'>
-                        <p>{comment}</p>
-                    </div>
-                ))
-            )}
-        </div>
         <div className='comment-form'>
             <h3>Add a Comment:</h3>
             <form onSubmit={(e) => {
@@ -27,6 +17,18 @@ const CommentList = (props) => {
               <button>Submit</button>
             </form>
           </div>
+        <div className='comments-container'>
+            {props.Comments.length === 0 ? (
+                <p>No comments available</p>
+            ) : (
+                props.Comments.map((comment, index) => (
+                    <div key={index} className='comment-item'>
+                        <p>{comment}</p>
+                    </div>
+                ))
+            )}
+        </div>
+        
       </div>
   )
 }

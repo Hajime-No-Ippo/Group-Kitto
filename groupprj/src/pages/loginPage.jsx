@@ -19,8 +19,20 @@ function LoginPage() {
   return (
     <div
       className="container-fluid d-flex justify-content-center align-items-center"
-      style={{ height: "100vh", width: "1400px", backgroundColor: "#c8e3ffff" }}
+      style={{ height: "100vh", width: "1400px", backgroundColor: "#ffffffff" }}
     >
+
+  {/* Background video */}
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute top-0 left-0 w-full h-full object-cover"
+  >
+    <source src="/vid/background.mov" type="video/mp4" />
+  </video>
+
       <div className="card p-4 shadow" style={{ width: "380px" }}>
         <h2 className="text-center mb-3">Welcome to Kitto Market</h2>
         <p className="text-center text-muted">Please log in to continue</p>

@@ -38,7 +38,6 @@ export const ProductDetail = () => {
   return (
     <>
     <div className="bg-gray-50 min-h-screen py-10 px-6">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden p-8 space-y-12">
 
       <section className="border-b pb-10">
       <ProductInfo 
@@ -47,6 +46,7 @@ export const ProductDetail = () => {
         />
       </section>
 
+      <div className="max-w-5xl mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">
       <section className="border-b pb-10">
       <MyCart 
         cart = {cart}
@@ -54,13 +54,16 @@ export const ProductDetail = () => {
         clearCart = {clearCart}
         />
       </section>
+      </div>
 
+      <div className="max-w-5xl mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">     
       <section className="pb-10">
       <CommentList 
         Comments = {Comments}
         handleComments = {handleComments}
       />     
       </section>
+      </div>
 
     
       <div className="flex justify-center gap-6 mt-10">
@@ -69,7 +72,6 @@ export const ProductDetail = () => {
       </div>
       </div>
 
-      </div>
     
     </>
   )

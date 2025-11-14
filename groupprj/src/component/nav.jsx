@@ -10,8 +10,9 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
       {/* Logo - click this logo always go to home */}
-      <a className="navbar-brand fw-bold" href="/">
-        Kitto Market
+      <a className="navbar-brand font-semibold" href="/">
+        Kitto
+        <span className="font-extralight ml-1">Market</span>
       </a>
 
       {/* Right side button */}

@@ -3,8 +3,8 @@ import React from 'react'
 
 const UserInfoCard = () => {
   return (
-    <div className="bg-blue-500 text-white p-4">
-      <h1>This is fucking user info</h1>
+    <div className="bg-red-500 text-yellow-200 text-4xl font-bold p-10 rounded-xl shadow-lg">
+      <h1>This is user info</h1>
       <h1>
         User Info Card Component
       </h1>

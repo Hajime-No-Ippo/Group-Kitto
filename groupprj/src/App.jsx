@@ -10,8 +10,6 @@ import UserProfile from "./pages/UserProfile.jsx";
 
 import Nav from "./component/nav.jsx";
 
-import "./App.css";
-
 export default function App() {
   return (
     <BrowserRouter>
