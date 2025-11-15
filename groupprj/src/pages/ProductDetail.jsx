@@ -4,6 +4,7 @@ import Products from '../Data/ProductData'
 import MyCart from '../component/MyCart'
 import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
+import Toast from '../component/Toast';
 
 /*
  ├── ProductDetail  ← adds to cart
@@ -14,6 +15,13 @@ export const ProductDetail = () => {
     const { id } = useParams();
     const [cart, setCart] = useState([]);
     const [Comments, setComments] = useState([]);
+    const [toast, setToast] = useState("");
+
+
+    const showToast = (msg) => {
+        setToast(msg);
+        setTimeout(() => setToast(""), 2500);
+    };
 
     const navigate = (path) => {
         window.location.href = path;
@@ -23,7 +31,7 @@ export const ProductDetail = () => {
 
     const addToCart = (item) => {
         setCart([...cart, item]);
-        alert(`${item.name} added to cart!`);
+        showToast(`${product.name} added to cart!`);
     }
 
     const handleComments = (newComment) => {
@@ -37,7 +45,18 @@ export const ProductDetail = () => {
     
   return (
     <>
+    {/* RENDER THE TOAST HERE */}
+      {toast && <Toast message={toast} />}
     <div className="bg-gray-50 min-h-screen py-10 px-6">
+
+      <div className="flex align-right gap-6 m-6">
+        <button
+        className="btn btn-outline-secondary mt-2 mb-4"
+        onClick={() => navigate("/home")}
+      >
+        ← Back to Home
+      </button>
+      </div>
 
       <section className="border-b pb-10">
       <ProductInfo 
@@ -46,7 +65,8 @@ export const ProductDetail = () => {
         />
       </section>
 
-      <div className="max-w-5xl mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">
+  <h2 className="font-semibold mt-4">My Cart:</h2>
+      <div className="mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden ">
       <section className="border-b pb-10">
       <MyCart 
         cart = {cart}
@@ -56,20 +76,19 @@ export const ProductDetail = () => {
       </section>
       </div>
 
-      <div className="max-w-5xl mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">     
+  <h2 className="font-semibold mt-4">Comments:</h2>
+      <div className=" mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">     
       <section className="pb-10">
       <CommentList 
         Comments = {Comments}
         handleComments = {handleComments}
+        product = {product}
       />     
       </section>
       </div>
 
     
-      <div className="flex justify-center gap-6 mt-10">
-        <button className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition" onClick={() => navigate("/home")}>Continue Shopping</button>
-        <button className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition" onClick={() => navigate("#")}>Seller's Profile</button>
-      </div>
+   
       </div>
 
     

@@ -7,42 +7,49 @@ const ProductInfo = (props) => {
 
   return (
     <>
-    <h2>ProductDetail:</h2>
-      <div className="max-w-5xl mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">
+    <h2 className="font-semibold m-4">ProductDetail:</h2>
+      <div className="flex bg-white rounded-2xl shadow-lg overflow-hidden">
           
-        <div className="flex-1 bg-gray-100 flex items-center justify-center p-6">
-            <div key={product.id} className="w-full max-w-sm h-64 md:h-80 flex items-center justify-center">
+        <div className="w-1/2 bg-gray-100">
+            <div key={product.id} className="w-full h-full scale-[1] !object-bottom">
               {/* LEFT: Product Image */}
               <ProductGallery images={product.img || [product.img]}/> 
             </div>
         </div>
 
-
             {/* RIGHT: PRODUCT DETAILS */}
             <div className="flex-1 p-10 space-y-6">
               {/* Title */}
-              <h1 className="text-2xl font-bold text-gray-900">{product.name}</h1>
+              <h1 className="text-2xl font-bold text-gray-900 italic">{product.name}</h1>
 
               {/* RIGHT: Product Description */}
-              <p className="text-gray-600 leading-relaxed">
-                {product.description}
-              </p>
+              <h2 className="text-black-900">
+                "{product.description}"
+              </h2>
 
                 {/* RIGHT: Product Details */}
               <div className="space-y-1 text-gray-800">
               <ul>
-                <li className="font-semibold">Category: {product.category}</li>
-                <li className="font-semibold">Price: ${product.price}</li> 
-                <li className="font-semibold">Seller: {product.seller}</li>
-                <li className="font-semibold">Condition: {product.condition}</li>
-                <li className="font-semibold">Exchange For: {product.exchangeFor}</li>
+                <li className="font-light">Category: {product.category}</li>
+                <li className="font-light">Price: ${product.price}</li> 
+                <li className="font-light">Seller: {product.seller}</li>
+                <li className="font-light">Condition: {product.condition}</li>
               </ul>
+
+              <div className="flex mt-4 space-x-1.5">
               <button 
-                className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:bg-gray-900 transition"
+                className="!bg-blue-600 !text-white !py-3 !px-5 rounded-xl text-lg font-medium shadow-md hover:!bg-green-700 transition"
                 onClick={() => addToCart(product)}
               >
                 Add to cart
               </button>
+
+              <button 
+                className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-green-700 transition" 
+                onClick={() => navigate("#")}>
+                Seller's Profile
+              </button>
+              </div>
               </div>
             </div>
       </div>

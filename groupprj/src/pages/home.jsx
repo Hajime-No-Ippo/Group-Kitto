@@ -13,7 +13,10 @@ export default function Home() {
   };
 
   return (
-    <div className="container mt-4">
+    <>
+    <h1 className="font-semibold text-center mt-10">Welcome to Kitto Market</h1>
+    <h1 className="font-light text-center mt-1 italic">Discover what you need today</h1>
+    <div className="container mt-2">
       <form onSubmit={handleSearch} className="mb-4">
         <div className="input-group">
           <input
@@ -28,7 +31,7 @@ export default function Home() {
         </div>
       </form>
 
-      <div className="mb-4">
+      <div className="mb-4 flex justify-start">
         <button
           className="btn btn-success px-4 py-2"
           onClick={() => navigate("/addItem")}
@@ -54,5 +57,6 @@ export default function Home() {
         ))}
       </div>
     </div>
+    </>
   );
 }

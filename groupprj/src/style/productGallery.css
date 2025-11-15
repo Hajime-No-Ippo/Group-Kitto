@@ -1,0 +1,3 @@
+.crop-right {
+  object-position: 70% center; /* 数值越大越往右裁 */
+}

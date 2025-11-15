@@ -7,7 +7,6 @@ import ProductDetail from "./pages/ProductDetail";
 import SearchResult from "./pages/SearchResult.jsx";
 import AddItem from "./pages/AddItem.jsx"
 import UserProfile from "./pages/UserProfile.jsx";
-
 import Nav from "./component/nav.jsx";
 
 export default function App() {

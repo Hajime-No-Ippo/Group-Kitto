@@ -11,11 +11,21 @@ const UserProfile = () => {
     useEffect(() => {
         // Fetch user profile data when the component mounts
     }, [])  
+    
   return (
+    <>
+      <div className="flex align-right gap-6 m-6">
+        <button
+        className="btn btn-outline-secondary mt-2 mb-4"
+        onClick={() => navigate("/home")}
+      >
+        ← Back to Home
+      </button>
+      </div>
     <div>
       <UserInfoCard/>
-      <button className = "" onClick={() => navigate("/home")}>Back</button>
     </div>
+    </>
   )
 }
 
