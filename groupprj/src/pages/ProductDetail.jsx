@@ -47,6 +47,7 @@ export const ProductDetail = () => {
     <>
     {/* RENDER THE TOAST HERE */}
       {toast && <Toast message={toast} />}
+
     <div className="bg-gray-50 min-h-screen py-10 px-6">
 
       <div className="flex align-right gap-6 m-6">
@@ -65,8 +66,7 @@ export const ProductDetail = () => {
         />
       </section>
 
-  <h2 className="font-semibold mt-4">My Cart:</h2>
-      <div className="mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden ">
+      
       <section className="border-b pb-10">
       <MyCart 
         cart = {cart}
@@ -74,7 +74,7 @@ export const ProductDetail = () => {
         clearCart = {clearCart}
         />
       </section>
-      </div>
+      
 
   <h2 className="font-semibold mt-4">Comments:</h2>
       <div className=" mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">     
@@ -86,11 +86,7 @@ export const ProductDetail = () => {
       />     
       </section>
       </div>
-
-    
-   
-      </div>
-
+    </div>
     
     </>
   )

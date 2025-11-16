@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
 
   socket.on("send-chat-message", (message) => {
     const sender = users[socket.id];
-    io.emit("chat-message", { name: sender, message }); // 👈 everyone gets the same message once
+    io.emit("chat-message", { senderId: socket.id, name: sender, message }); // 👈 everyone gets the same message once
   });
 
   socket.on("disconnect", () => {

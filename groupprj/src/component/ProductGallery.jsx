@@ -14,7 +14,7 @@ const ProductGallery = ({images = []}) => {
                 limitedPics.map((ims, index) => (
                     <div key={index}>
                         <img
-                        className="w-full h-full translate-y-[-60px] translate-x-[0px]"
+                        className="w-full h-full translate-y-[-100px] translate-x-[0px]"
                         src={ims} 
                         alt={`Product Image ${index + 1}`} />
                     </div>

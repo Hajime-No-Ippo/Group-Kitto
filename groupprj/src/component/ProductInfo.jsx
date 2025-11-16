@@ -1,8 +1,10 @@
 import React from 'react'
 import ProductGallery from './ProductGallery.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const ProductInfo = (props) => {
   const {product, addToCart} = props;
+  const navigate = useNavigate();
   if (!product) return <p>No product selected.</p>;
 
   return (
@@ -46,8 +48,10 @@ const ProductInfo = (props) => {
 
               <button 
                 className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-green-700 transition" 
-                onClick={() => navigate("#")}>
-                Seller's Profile
+                onClick={() => navigate("/chat", {
+                state: { seller: product.seller }
+                })}>
+                Chat with Seller
               </button>
               </div>
               </div>

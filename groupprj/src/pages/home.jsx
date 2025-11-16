@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
     <h1 className="font-semibold text-center mt-10">Welcome to Kitto Market</h1>
-    <h1 className="font-light text-center mt-1 italic">Discover what you need today</h1>
+    <h1 className="font-light text-center mt-1 italic">Discover what you need</h1>
     <div className="container mt-2">
       <form onSubmit={handleSearch} className="mb-4">
         <div className="input-group">
