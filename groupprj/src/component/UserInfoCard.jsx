@@ -8,14 +8,14 @@ const UserInfoCard = () => {
 
 
   return (
-    <div className="bg-red-500 text-yellow-200 text-4xl font-bold p-10 rounded-xl shadow-lg">
+    <div className="flex bg-red-500 text-yellow-200 text-4xl font-bold p-10 rounded-xl shadow-lg">
       <h1>This is user info</h1>
       <h1>
         User Info Card Component
         <img 
                 src={currentUser.avatar} 
                 alt="avatar" 
-                className="w-32 rounded-full mt-4" 
+                className=" flex w-60 rounded-full mt-4 justify-center animate-bounce" 
             />
 
         <p>Username: {currentUser.username}</p>
