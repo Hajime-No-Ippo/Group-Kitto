@@ -5,22 +5,16 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 export default function AddItem() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState(
-    "book",
-    "electronic",
-    "clothes",
-    "shoes",
-    "others"
-  );
+  const [category, setCategory] = useState("book");
   const [price, setPrice] = useState("");
-  const [condition, setCondition] = useState("new", "like new", "good", "fair");
+  const [condition, setCondition] = useState("new");
   const [exchangeFor, setExchangeFor] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !description || !price || !exchangeFor) {
-      alert("请填写所有必填信息！");
+    if (!name || !description || !price ) {
+      alert("Please fill all fields！");
       return;
     }
 
@@ -34,82 +28,89 @@ export default function AddItem() {
       createdAt: serverTimestamp(),
     });
 
-    alert("Item publish success");
+    alert("Item published successfully!");
     setName("");
     setDescription("");
-    setCategory("clothes");
+    setCategory("book");
     setPrice("");
     setCondition("new");
     setExchangeFor("");
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "400px",
-        gap: "10px",
-      }}
-    >
-      <h2>Publish Your Item</h2>
-      <input
-        type="text"
-        placeholder="item name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4"
+      >
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+          Publish Your Item
+        </h2>
 
-      <textarea
-        placeholder="item description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
+        <input
+          type="text"
+          placeholder="Item name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
 
-      <label>
-        分类：
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="book">book</option>
-          <option value="electronic">lectronic</option>
-          <option value="clothes">clothes</option>
-          <option value="shoes">shoes</option>
-          <option value="others">others</option>
-        </select>
-      </label>
+        <textarea
+          placeholder="Item description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+          className="border border-gray-300 rounded-lg p-3 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
 
-      <input
-        type="number"
-        placeholder="price(euro)"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-        required
-      />
+        <div className="flex flex-col md:flex-row md:gap-4">
+          <label className="flex-1 flex flex-col">
+            Category:
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              <option value="book">Book</option>
+              <option value="electronic">Electronic</option>
+              <option value="clothes">Clothes</option>
+              <option value="shoes">Shoes</option>
+              <option value="others">Others</option>
+            </select>
+          </label>
 
-      <label>
-        新旧程度：
-        <select
-          value={condition}
-          onChange={(e) => setCondition(e.target.value)}
+          <label className="flex-1 flex flex-col mt-2 md:mt-0">
+            Condition:
+            <select
+              value={condition}
+              onChange={(e) => setCondition(e.target.value)}
+              className="border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              <option value="new">New</option>
+              <option value="like new">Like New</option>
+              <option value="good">Good</option>
+              <option value="fair">Fair</option>
+            </select>
+          </label>
+        </div>
+
+        <input
+          type="number"
+          placeholder="Price (EUR)"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
+          className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg p-3 mt-2 transition-all duration-200"
         >
-          <option value="new">new</option>
-          <option value="like new">like new</option>
-          <option value="good">good</option>
-          <option value="fair">fair</option>
-        </select>
-      </label>
-
-      <input
-        type="text"
-        placeholder="wanted item"
-        value={exchangeFor}
-        onChange={(e) => setExchangeFor(e.target.value)}
-        required
-      />
-
-      <button type="submit">Publish Item</button>
-    </form>
+          Publish Item
+        </button>
+      </form>
+    </div>
   );
 }
