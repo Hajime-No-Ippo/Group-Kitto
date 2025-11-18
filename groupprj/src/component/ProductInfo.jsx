@@ -25,20 +25,20 @@ const ProductInfo = (props) => {
               <h1 className="text-2xl font-bold text-gray-900 italic">{product.name}</h1>
 
               {/* RIGHT: Product Description */}
-              <h2 className="text-black-900">
+              <h2 className="mb-6">
                 "{product.description}"
               </h2>
 
                 {/* RIGHT: Product Details */}
-              <div className="space-y-1 text-gray-800">
-              <ul>
-                <li className="font-light">Category: {product.category}</li>
-                <li className="font-light">Price: ${product.price}</li> 
-                <li className="font-light">Seller: {product.seller}</li>
-                <li className="font-light">Condition: {product.condition}</li>
+              <div className="text-gray-800">
+              <ul className=" space-y-2 pl-0 ">
+                <li className="font-light text-lg">Category: {product.category}</li>
+                <li className="font-light text-gray-900 text-lg">Price: ${product.price}</li> 
+                <li className="font-light text-lg">Condition: {product.condition}</li>
+                <li className="font-light text-lg">Seller: {product.seller}</li>
               </ul>
 
-              <div className="flex mt-4 space-x-1.5">
+              <div className="flex mt-6 space-x-1.5">
               <button 
                 className="!bg-blue-600 !text-white !py-3 !px-5 rounded-xl text-lg font-medium shadow-md hover:!bg-green-700 transition"
                 onClick={() => addToCart(product)}

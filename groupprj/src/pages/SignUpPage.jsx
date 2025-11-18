@@ -9,6 +9,18 @@ const SignUpPage = ({showToast}) => {
       const [username, setUsername] = useState("");
       const [password, setPassword] = useState("");
       
+
+      async function handlesignUp(e) {
+      e.preventDefault();
+      try {
+        const newUser = await signUp(useremail, username, password);
+        console.log("New User:", newUser);
+        // redirect to dashboard
+      } catch (err) {
+        alert("This email is already registered. Try logging in instead." + err.message);
+      }
+  }
+
       const handleLogin = (e) => {
         e.preventDefault();
         showToast(`${username} login successfully!`);
@@ -39,7 +51,7 @@ const SignUpPage = ({showToast}) => {
         <h2 className="text-center mb-3">Welcome to Kitto Market</h2>
         <p className="text-center text-muted">You can Sign Up here</p>
 
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handlesignUp}>
           <div className="mb-3">
             <label className="form-label">Email</label>
             <input

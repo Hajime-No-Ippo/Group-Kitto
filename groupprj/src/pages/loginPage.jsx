@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from '../service/authService'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function LoginPage({showToast}) {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
+  const [useremail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
 
 
   // click Login will direct to the Home page
 
-  const handleLogin = (e) => {
+
+    async function handleLogin(e) {
     e.preventDefault();
-    showToast(`${username} login successfully!`);
-    // 这里以后加入真正的验证逻辑
-    navigate("/home")
-    
-  };
+    try {
+      const user = await login(useremail, password);
+      console.log("Logged in:", user);
+      showToast(`${useremail} login successfully!`);
+      navigate("/home")
+      // redirect to dashboard
+    } catch (err) {
+      alert("Login failed: " + err.message);
+    }
+  }
 
   return (
     <div
@@ -42,12 +49,12 @@ function LoginPage({showToast}) {
 
         <form onSubmit={handleLogin}>
           <div className="mb-3">
-            <label className="form-label">Username</label>
+            <label className="form-label">Email</label>
             <input
-              type="text"
+              type="email"
               className="form-control"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={useremail}
+              onChange={(e) => setUserEmail(e.target.value)}
               required
             />
           </div>
