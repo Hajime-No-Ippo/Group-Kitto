@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { db } from "../firebase";
+import React, { useState } from "react";
+import { db, auth } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { useNavigate } from "react-router-dom"; // import useNavigate
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddItem() {
   const [name, setName] = useState("");
@@ -8,40 +10,67 @@ export default function AddItem() {
   const [category, setCategory] = useState("book");
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("new");
-  const [exchangeFor, setExchangeFor] = useState("");
+
+  const navigate = useNavigate(); // initialize navigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !description || !price ) {
-      alert("Please fill all fields！");
+    if (!name || !description || !price) {
+      alert("Please fill all required fields！");
       return;
     }
 
-    await addDoc(collection(db, "items"), {
-      name,
-      description,
-      category,
-      price,
-      condition,
-      exchangeFor,
-      createdAt: serverTimestamp(),
-    });
+    const user = auth.currentUser;
+    if (!user) {
+      alert("You must be logged in to publish an item!");
+      return;
+    }
 
-    alert("Item published successfully!");
-    setName("");
-    setDescription("");
-    setCategory("book");
-    setPrice("");
-    setCondition("new");
-    setExchangeFor("");
+    const productId = uuidv4(); // generate unique product ID
+
+    try {
+      await addDoc(collection(db, "items"), {
+        name,
+        description,
+        category,
+        price,
+        condition,
+        productId,
+        uid: user.uid,
+        createdAt: serverTimestamp(),
+      });
+
+      // Show alert and navigate to homepage
+      alert("Item published successfully!");
+      navigate("/home"); // navigate to homepage
+
+      // Reset form
+      setName("");
+      setDescription("");
+      setCategory("book");
+      setPrice("");
+      setCondition("new");
+      localStorage.removeItem("uploadedItemImage");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("Failed to publish item.");
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-start justify-center bg-gray-100 p-4 relative">
+      {/* Back button */}
+      <button
+        onClick={() => navigate("/home")}
+        className="absolute left-4 top-4 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-4 py-2 rounded-lg transition-all duration-200"
+      >
+        Back
+      </button>
+
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4"
+        className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 mt-16"
       >
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
           Publish Your Item
