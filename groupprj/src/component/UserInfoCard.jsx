@@ -15,7 +15,7 @@ const UserInfoCard = () => {
         <img 
                 src={currentUser.avatar} 
                 alt="avatar" 
-                className=" flex w-60 rounded-full mt-4 justify-center animate-bounce" 
+                className=" flex w-60 rounded-full mt-4 justify-center" 
             />
 
         <p>Username: {currentUser.username}</p>

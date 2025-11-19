@@ -6,15 +6,15 @@ const ProductGallery = ({images = []}) => {
   const limitedPics = images.slice(0, 9);
 
   return (
- <div className="h-full ">
-  <div className="absolute inset-0 overflow-hidden translate-x-[0px] shadow-md">
+ <div className="h-full rounded-2xl">
+  <div className="absolute rounded-l-2xl inset-0 overflow-hidden translate-x-[0px] shadow-md">
             {limitedPics.length === 0 ? (
                 <p>No images available</p>
             ) : (
                 limitedPics.map((ims, index) => (
                     <div key={index}>
                         <img
-                        className="w-full h-full translate-y-[-100px] translate-x-[0px]"
+                        className="w-full h-full rounded-2xl translate-y-[0px] translate-x-[0px]"
                         src={ims} 
                         alt={`Product Image ${index + 1}`} />
                     </div>

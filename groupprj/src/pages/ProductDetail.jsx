@@ -6,6 +6,7 @@ import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
 
+
 /*
  ├── ProductDetail  ← adds to cart
  └── MyCart          ← reads from cart
@@ -16,6 +17,8 @@ export const ProductDetail = () => {
     const [cart, setCart] = useState([]);
     const [Comments, setComments] = useState([]);
     const [toast, setToast] = useState("");
+    const [clicked, setClicked] = useState(false);
+
 
 
     const showToast = (msg) => {
@@ -30,8 +33,14 @@ export const ProductDetail = () => {
     const product = Products.find((item) => item.id === parseInt(id));
 
     const addToCart = (item) => {
+      if(cart.find(i => i.name === item.name)) {
+        showToast(`${item.name} has already added to cart!`);
+        return;
+      }else{
         setCart([...cart, item]);
-        showToast(`${product.name} added to cart!`);
+        showToast(`${item.name} added to cart!`);
+        setClicked(true);
+      }
     }
 
     const handleComments = (newComment) => {
@@ -40,7 +49,7 @@ export const ProductDetail = () => {
 
     const sumAllItems = cart.reduce((a, b) => a + b.price, 0);
 
-    const clearCart = () => setCart([]);
+    const clearCart = () => {setCart([]); setClicked(false)}
 
     
   return (
@@ -59,21 +68,26 @@ export const ProductDetail = () => {
       </button>
       </div>
 
+      
       <section className="border-b pb-10">
       <ProductInfo 
         product = {product}
         addToCart = {addToCart}
         />
       </section>
-
       
+
+
       <section className="border-b pb-10">
       <MyCart 
         cart = {cart}
         sumAllItems = {sumAllItems}
         clearCart = {clearCart}
+        clicked = {clicked}
+  
         />
       </section>
+
       
 
   <h2 className="font-semibold mt-4">Comments:</h2>
