@@ -17,18 +17,17 @@ const ProductInfo = (props) => {
   return (
     <>
     <h2 className="font-semibold m-4">ProductDetail:</h2>
-      <div className="relative flex rounded-2xl shadow-lg">
-          
-        <div className="w-1/2 bg-white rounded-l-2xl">
-            <div key={product.id} className="w-full h-full scale-[1] !object-bottom">
-              {/* LEFT: Product Image */}
-              <ProductGallery images={product.img || [product.img]}/> 
-            </div>
-        </div>
         <SpotlightCard
           spotlightColor="rgba(0, 0, 0, 0.27)"
-          className=" bg-transparent"
+          className="relative flex rounded-2xl shadow-lg"
         >
+          
+        <div className="w-1/2 bg-white rounded-2xl">
+            <div key={product.id} className="w-full h-full scale-[1] !object-bottom">
+              {/* LEFT: Product Image */}
+              <ProductGallery images={[product.img]}/> 
+            </div>
+        </div>
 
             {/* RIGHT: PRODUCT DETAILS */}
             <div className="flex-1 p-10 space-y-6">
@@ -68,8 +67,7 @@ const ProductInfo = (props) => {
               </div>
               </div>
             </div>
-                  </SpotlightCard>
-      </div>
+            </SpotlightCard>
       </>
   )
 }

@@ -4,24 +4,47 @@ import SpotlightCard from "@components/SpotlightCard.jsx";
 import '../style/SpotlightCard.css';
 
 const MyCart = (props) => {
+    const [showDetail, setShowDetail] = useState(false);
 
     const navigate = useNavigate();
 
+    const handleDetailToggle = () => {
+        setShowDetail(!showDetail);
+    }
+
+    if(!showDetail) {
+        return (
+            <SpotlightCard
+                
+                spotlightColor="rgba(0, 0, 0, 0.27)"
+                className="flex w-full mx-auto justify-between p-4 rounded-2xl shadow-lg cursor-pointer m-4"
+                >
+            <>
+            <div onClick={handleDetailToggle}>
+                <h2 className="font-semibold">My Cart: {props.cart.length} items</h2>
+                <span className="text-blue-600 align-center underline" >View Details</span>
+            </div>
+            </>
+            </SpotlightCard>
+        )
+    }
+    
   return (
     <>
       <h2 className="font-semibold m-4">My Cart:</h2>
-    <div className="flex w-full mx-auto my-2 bg-white rounded-2xl shadow-xl flex-col">
+    <div className="flex w-full mx-auto my-2 bg-white rounded-2xl shadow-xl flex-col"  >
       <SpotlightCard
+                
                 spotlightColor="rgba(0, 0, 0, 0.27)"
                 className=" bg-transparent">
-        <div className="flex w-full m-4">
+        <div className="flex w-full m-4" >
             {props.cart.length === 0 ? <h2 className="font-semibold">Your cart is Empty</h2> :
         <h2 className="font-semibold">You had selected: {props.cart.length} items</h2>   
     }
         <div className="flex w-full m-4 justify-end translate-y-[-20px] translate-x-[-25px]">
             <button className="bg-opacity-0 text-blue-600 border-1 border-blue-600 py-2 !px-5 rounded-xl text-lg font-medium hover:bg-blue-600 hover:text-white transition"
-            onClick={props.clearCart}>
-                Clear Cart</button>
+            onClick={handleDetailToggle}>
+                Show Less</button>
         </div>
         </div>
         <div className="flex w-full">
@@ -76,6 +99,11 @@ const MyCart = (props) => {
         
 
         <div className="flex justify-end space-x-1.5 m-6"> 
+            
+            <button className="bg-opacity-0 text-blue-600 border-1 border-blue-600 py-2 !px-5 rounded-xl text-lg font-medium hover:bg-blue-600 hover:text-white transition"
+            onClick={props.clearCart}>
+                Clear Cart
+            </button>
             <button className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-blue-600 transition">
             Proceed to Checkout</button>
             <button className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-blue-600 transition"
@@ -83,11 +111,13 @@ const MyCart = (props) => {
             Continue Shopping</button>
         
         </div>
-             </SpotlightCard>
+        </SpotlightCard>
     </div>
 
     </>
   )
 }
+
+
 
 export default MyCart

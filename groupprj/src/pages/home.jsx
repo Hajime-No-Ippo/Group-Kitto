@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Products from "../Data/ProductData";
+import useFetchData from "../component/FetchData.jsx";
 import "../style/marketUi.css";
 
 export default function Home() {
   const navigate = useNavigate();
+  const Products = useFetchData();
 
   const handleSearch = (e) => {
     e.preventDefault();

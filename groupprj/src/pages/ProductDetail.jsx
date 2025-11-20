@@ -5,6 +5,7 @@ import MyCart from '../component/MyCart'
 import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
+import useFetchData from "../component/FetchData.jsx";
 
 
 /*
@@ -13,11 +14,12 @@ import Toast from '../component/Toast';
 */
  
 export const ProductDetail = () => {
-    const { id } = useParams();
     const [cart, setCart] = useState([]);
     const [Comments, setComments] = useState([]);
     const [toast, setToast] = useState("");
     const [clicked, setClicked] = useState(false);
+    const Products = useFetchData();
+    const { id } = useParams();
 
 
 
@@ -30,11 +32,11 @@ export const ProductDetail = () => {
         window.location.href = path;
     }
 
-    const product = Products.find((item) => item.id === parseInt(id));
+    const product = Products.find(p => p.id === id);
 
     const addToCart = (item) => {
       if(cart.find(i => i.name === item.name)) {
-        showToast(`${item.name} has already added to cart!`);
+        showToast(`${item.name} SOLD OUT!`);
         return;
       }else{
         setCart([...cart, item]);
@@ -51,7 +53,9 @@ export const ProductDetail = () => {
 
     const clearCart = () => {setCart([]); setClicked(false)}
 
-    
+  if (!product) {
+  return <p>Loading product...</p>;
+  }else
   return (
     <>
     {/* RENDER THE TOAST HERE */}
@@ -91,7 +95,6 @@ export const ProductDetail = () => {
       
 
   <h2 className="font-semibold mt-4">Comments:</h2>
-      <div className=" mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">     
       <section className="pb-10">
       <CommentList 
         Comments = {Comments}
@@ -100,7 +103,7 @@ export const ProductDetail = () => {
       />     
       </section>
       </div>
-    </div>
+    
     
     </>
   )
