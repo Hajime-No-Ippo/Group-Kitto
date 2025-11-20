@@ -1,21 +1,31 @@
 import React from 'react'
 import ProductGallery from './ProductGallery.jsx';
 import { useNavigate } from 'react-router-dom';
+import SpotlightCard from "@components/SpotlightCard.jsx";
+import '../style/SpotlightCard.css';
+
 
 const ProductInfo = (props) => {
-  const {product, addToCart} = props;
+  const {product, addToCart, clicked} = props;
   const navigate = useNavigate();
+  
+
+
+
   if (!product) return <p>No product selected.</p>;
 
   return (
     <>
     <h2 className="font-semibold m-4">ProductDetail:</h2>
-      <div className="flex bg-white rounded-2xl shadow-lg overflow-hidden">
+        <SpotlightCard
+          spotlightColor="rgba(0, 0, 0, 0.27)"
+          className="relative flex rounded-2xl shadow-lg"
+        >
           
-        <div className="w-1/2 bg-gray-100">
+        <div className="w-1/2 bg-white rounded-2xl">
             <div key={product.id} className="w-full h-full scale-[1] !object-bottom">
               {/* LEFT: Product Image */}
-              <ProductGallery images={product.img || [product.img]}/> 
+              <ProductGallery images={[product.img]}/> 
             </div>
         </div>
 
@@ -40,23 +50,24 @@ const ProductInfo = (props) => {
 
               <div className="flex mt-6 space-x-1.5">
               <button 
-                className="!bg-blue-600 !text-white !py-3 !px-5 rounded-xl text-lg font-medium shadow-md hover:!bg-green-700 transition"
+                disabled={clicked}
+                className="bg-opacity-0 text-blue-600 border-1 border-blue-600 py-2 !px-5 rounded-xl text-lg font-medium  hover:bg-blue-600 hover:text-white transition"
                 onClick={() => addToCart(product)}
-              >
-                Add to cart
+                >
+               {!clicked ? "Add to cart" : "In the cart"}
               </button>
 
               <button 
-                className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-green-700 transition" 
+                className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-blue-600 transition" 
                 onClick={() => navigate("/chat", {
-                state: { seller: product.seller }
+                  state: { seller: product.seller }
                 })}>
                 Chat with Seller
               </button>
               </div>
               </div>
             </div>
-      </div>
+            </SpotlightCard>
       </>
   )
 }

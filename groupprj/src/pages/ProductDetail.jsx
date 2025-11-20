@@ -5,6 +5,8 @@ import MyCart from '../component/MyCart'
 import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
+import useFetchData from "../component/FetchData.jsx";
+
 
 /*
  ├── ProductDetail  ← adds to cart
@@ -12,10 +14,13 @@ import Toast from '../component/Toast';
 */
  
 export const ProductDetail = () => {
-    const { id } = useParams();
     const [cart, setCart] = useState([]);
     const [Comments, setComments] = useState([]);
     const [toast, setToast] = useState("");
+    const [clicked, setClicked] = useState(false);
+    const Products = useFetchData();
+    const { id } = useParams();
+
 
 
     const showToast = (msg) => {
@@ -27,11 +32,17 @@ export const ProductDetail = () => {
         window.location.href = path;
     }
 
-    const product = Products.find((item) => item.id === parseInt(id));
+    const product = Products.find(p => p.id === id);
 
     const addToCart = (item) => {
+      if(cart.find(i => i.name === item.name)) {
+        showToast(`${item.name} SOLD OUT!`);
+        return;
+      }else{
         setCart([...cart, item]);
-        showToast(`${product.name} added to cart!`);
+        showToast(`${item.name} added to cart!`);
+        setClicked(true);
+      }
     }
 
     const handleComments = (newComment) => {
@@ -40,9 +51,11 @@ export const ProductDetail = () => {
 
     const sumAllItems = cart.reduce((a, b) => a + b.price, 0);
 
-    const clearCart = () => setCart([]);
+    const clearCart = () => {setCart([]); setClicked(false)}
 
-    
+  if (!product) {
+  return <p>Loading product...</p>;
+  }else
   return (
     <>
     {/* RENDER THE TOAST HERE */}
@@ -59,25 +72,29 @@ export const ProductDetail = () => {
       </button>
       </div>
 
+      
       <section className="border-b pb-10">
       <ProductInfo 
         product = {product}
         addToCart = {addToCart}
         />
       </section>
-
       
+
+
       <section className="border-b pb-10">
       <MyCart 
         cart = {cart}
         sumAllItems = {sumAllItems}
         clearCart = {clearCart}
+        clicked = {clicked}
+  
         />
       </section>
+
       
 
   <h2 className="font-semibold mt-4">Comments:</h2>
-      <div className=" mx-auto my-12 bg-white rounded-3xl shadow-xl flex flex-col md:flex-row overflow-hidden">     
       <section className="pb-10">
       <CommentList 
         Comments = {Comments}
@@ -86,7 +103,7 @@ export const ProductDetail = () => {
       />     
       </section>
       </div>
-    </div>
+    
     
     </>
   )

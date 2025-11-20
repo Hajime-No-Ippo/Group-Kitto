@@ -20,5 +20,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app); // 数据库
-export const auth = getAuth(app); // 用户认证
+export const db = getFirestore(app);         // 数据库
+export const auth = getAuth(app);            // 用户认证

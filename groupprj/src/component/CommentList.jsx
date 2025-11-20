@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
+import SpotlightCard from "@components/SpotlightCard.jsx";
+import '../style/SpotlightCard.css';
+
 
 const CommentList = (props) => {
+  const { product, handleComments, Comments } = props;
   return (
     <div>
+      <h2 className="font-semibold mt-4">Comments:</h2>
+      <SpotlightCard
+          spotlightColor="rgba(0, 0, 0, 0.27)"
+          className="relative flex rounded-2xl shadow-lg"
+        >
 
       <h2>Reviews:</h2>
       <div className='comments-container'>
             {props.Comments.length === 0 ? (
               <div className="font-semibold">
-                <p>Be the first to comment {props.product.name}</p>
+                <p>Be the first to comment {product.name}</p>
               </div>
             ) : (
-                props.Comments.map((comment, index) => (
+                Comments.map((comment, index) => (
                     <div key={index} className='comment-item'>
                         <p>{comment}</p>
                     </div>
@@ -24,16 +33,16 @@ const CommentList = (props) => {
             <form onSubmit={(e) => {
               e.preventDefault();
               const newComment = e.target.elements.comment.value;
-              props.handleComments(newComment);
+              handleComments(newComment);
               e.target.reset();
             }}>
                 <textarea name="comment" rows="4" cols="50" required></textarea>
               <button>Submit</button>
             </form>
           </div>
-
-        
-        
+       </SpotlightCard>
+          
+          
       </div>
   )
 }

@@ -12,6 +12,7 @@ import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginToast from "./component/LoginToast.jsx";
 import NoNavLayout from "./component/layout/NoNavLayout.jsx";
 import DefaultLayout from "./component/layout/DefaultLayout.jsx";
+import FetchData from "./component/FetchData.jsx";
 
 
 export default function App() {
@@ -36,6 +37,8 @@ export default function App() {
         <Route path="/chat" element={<Chatbox />} />
         <Route path="/clothes" element={<Clothes />} />
         <Route path="/addItem" element={<AddItem />} />
+        <Route path="/test" element={<FetchData />} />
+        
       </Route>
 
 {/* Pages WITHOUT Nav */}
