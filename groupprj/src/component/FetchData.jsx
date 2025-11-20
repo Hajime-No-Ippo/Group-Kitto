@@ -16,7 +16,7 @@ const useFetchData = () => {
       const list = snapshot.docs.map(doc => {
         const item = {id: doc.id, ...doc.data()};
 
-        const match = dummyPics.find(pic => pic.productID === item.productId);
+        const match = dummyPics.find(pic => pic.itemID === item.id);
         item.img = match ? match.img[0] : "/img/placeholder.jpg";
 
 

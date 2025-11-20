@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { db, auth } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { useNavigate } from "react-router-dom"; // import useNavigate
-import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 export default function AddItem() {
   const [name, setName] = useState("");
@@ -11,7 +10,7 @@ export default function AddItem() {
   const [price, setPrice] = useState("");
   const [condition, setCondition] = useState("new");
 
-  const navigate = useNavigate(); // initialize navigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +26,6 @@ export default function AddItem() {
       return;
     }
 
-    const productId = uuidv4(); // generate unique product ID
-
     try {
       await addDoc(collection(db, "items"), {
         name,
@@ -36,16 +33,13 @@ export default function AddItem() {
         category,
         price,
         condition,
-        productId,
         uid: user.uid,
         createdAt: serverTimestamp(),
       });
 
-      // Show alert and navigate to homepage
       alert("Item published successfully!");
-      navigate("/home"); // navigate to homepage
+      navigate("/home");
 
-      // Reset form
       setName("");
       setDescription("");
       setCategory("book");
@@ -59,47 +53,64 @@ export default function AddItem() {
   };
 
   return (
-    <div className="min-h-screen flex items-start justify-center bg-gray-100 p-4 relative">
-      {/* Back button */}
-      <button
-        onClick={() => navigate("/home")}
-        className="absolute left-4 top-4 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-4 py-2 rounded-lg transition-all duration-200"
-      >
-        Back
-      </button>
+  <div className="bg-gray-50 min-h-screen p-0 m-0">
 
+    {/* Top bar with Back Button */}
+    <div className="flex align-right gap-6 m-6">
+        <button
+        className="btn btn-outline-secondary mt-2 mb-4"
+        onClick={() => navigate("/home")}
+      >
+        ← Back to Home
+      </button>
+       <button
+        className="btn btn-outline-secondary mt-2 mb-4"
+        onClick={() => navigate("/likeit")}
+      >
+        ← LikeIt
+      </button>
+      </div>
+
+    {/* Main form area */}
+    <div className="flex justify-center mt-8 px-6">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 mt-16"
+        className="w-full max-w-3xl bg-white border border-gray-200 rounded-lg shadow-sm p-10"
       >
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
-          Publish Your Item
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">
+          Publish a New Item
         </h2>
 
-        <input
-          type="text"
-          placeholder="Item name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+        <div className="grid grid-cols-2 gap-6">
+          <div className="col-span-2">
+            <label className="block font-medium mb-1">Item Name</label>
+            <input
+              type="text"
+              placeholder="Enter item name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
 
-        <textarea
-          placeholder="Item description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-          className="border border-gray-300 rounded-lg p-3 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+          <div className="col-span-2">
+            <label className="block font-medium mb-1">Description</label>
+            <textarea
+              placeholder="Describe the item"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded-md p-3 h-32 resize-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
 
-        <div className="flex flex-col md:flex-row md:gap-4">
-          <label className="flex-1 flex flex-col">
-            Category:
+          <div>
+            <label className="block font-medium mb-1">Category</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400"
             >
               <option value="book">Book</option>
               <option value="electronic">Electronic</option>
@@ -107,39 +118,43 @@ export default function AddItem() {
               <option value="shoes">Shoes</option>
               <option value="others">Others</option>
             </select>
-          </label>
+          </div>
 
-          <label className="flex-1 flex flex-col mt-2 md:mt-0">
-            Condition:
+          <div>
+            <label className="block font-medium mb-1">Condition</label>
             <select
               value={condition}
               onChange={(e) => setCondition(e.target.value)}
-              className="border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400"
             >
               <option value="new">New</option>
               <option value="like new">Like New</option>
               <option value="good">Good</option>
               <option value="fair">Fair</option>
             </select>
-          </label>
-        </div>
+          </div>
 
-        <input
-          type="number"
-          placeholder="Price (EUR)"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-          className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+          <div className="col-span-2">
+            <label className="block font-medium mb-1">Price (EUR)</label>
+            <input
+              type="number"
+              placeholder="Enter price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+        </div>
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg p-3 mt-2 transition-all duration-200"
+          className="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md py-3 transition-all"
         >
           Publish Item
         </button>
       </form>
     </div>
-  );
+  </div>
+);
 }

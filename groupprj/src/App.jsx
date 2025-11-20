@@ -9,6 +9,7 @@ import SearchResult from "./pages/SearchResult.jsx";
 import AddItem from "./pages/AddItem.jsx"
 import UserProfile from "./pages/UserProfile.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
+import LikeIt from "./pages/LikeIt.jsx";
 import LoginToast from "./component/LoginToast.jsx";
 import NoNavLayout from "./component/layout/NoNavLayout.jsx";
 import DefaultLayout from "./component/layout/DefaultLayout.jsx";
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/clothes" element={<Clothes />} />
         <Route path="/addItem" element={<AddItem />} />
         <Route path="/test" element={<FetchData />} />
+        <Route path="/likeit" element={<LikeIt />} />
         
       </Route>
 

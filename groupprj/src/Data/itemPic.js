@@ -1,53 +1,61 @@
-const Items = [
+const dummyPics = [
 
   {
-    productID:"6ab67d95-1c6e-41a3-b6f0-c234f617f3d3",
+    itemID:"iOHGLEHuPQZGpnxazaJc",
     img: ["/img/vintage-jacket.jpg"],
   },
   {
-    productID:"80df0971-1ea8-463a-9f52-a3840a53a524",
+    itemID:"0Fu2Befnut0N7OyGlzcC",
     img: ["/img/sneakers.jpg"],
   },
   {
-    productID:"fdb16eda-0b68-467e-9f69-88f6a1279b79",
+    itemID:"bw3125luHE6sJv43UHAy",
     img: ["/img/black-backpack.jpg"],
   },
   {
-    productID:"ace77b59-721c-4555-8f3a-5e59e1c51de5",
+    itemID:"CV0NILTI6jMPxOnYvf2h",
     img: ["/img/ceramic-handmade-mug.jpg"],
   },
   {
-    productID:"96b11aa6-ba13-48fa-ac8b-e5d32a493797",
+    itemID:"RRrug2w8C3ylnshZBrhC",
     img: ["/img/laptop-stand.jpg"],
   },
   {
-    productID:"f4a821cc-47a3-4df7-836c-fbd9efbe5ce1",
+    itemID:"SN9L8uuTb2IMkAMdw22x",
     img: ["/img/desk-lamp.jpg"],
   },
   {
-    productID:"251ab390-0a67-4dd2-9e5e-c2cd79e676cc",
+    itemID:"6vzLEYdN6exI7wXb8Q0r",
     img: ["/img/headphones.jpg"],
   },
   {
-    productID:"d80d3ad4-2e05-48b5-86f2-9bb793c759db",
+    itemID:"FiO6Q3nMRg7F2y4YkRyu",
     img: ["/img/chair.jpg"],
   },
   {
-    productID:"438cd129-b54a-46ec-bbad-b05354359df9",
+    itemID:"HKKSmasIiXMviPzI2Kjv",
     img: ["/img/bottle-black-eco.jpg"],
   },
   {
-    productID:"c9b62719-677d-4987-952e-0722d9925bd1",
+    itemID:"u128KOMXRntwPjxkRi2b",
     img: ["/img/tote-bag.jpg"],
   },
   {
-    productID:"cb74a3d7-2ae0-46ba-9359-4e74137497bc",
+    itemID:"Bh66Zfz4B5hMafywAMTb",
     img: ["/img/bluetooth-speaker.jpg"],
   },
   {
-    productID:"4bb5a045-8bcc-4c74-8820-f85f9aab9d94",
+    itemID:"kIjEPAduPrEZpovZ42AX",
     img: ["/img/indoor-plant.jpg"],
+  },
+  {
+    itemID:"1cTQfzNArNSPVDPzMs25",
+    img: ["/img/friends_mug.jpg"],
+  },
+  {
+    itemID:"xEtfQ01LPB8AzbsGnzX0",
+    img: ["/img/java_books.jpg"],
   },
 ];
 
-export default Items;
+export default dummyPics;

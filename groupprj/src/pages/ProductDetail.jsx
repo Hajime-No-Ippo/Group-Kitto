@@ -6,6 +6,9 @@ import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
 import useFetchData from "../component/FetchData.jsx";
+// ⭐ added
+import LikeIt from "../component/LikeIt";  
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 /*
@@ -20,7 +23,17 @@ export const ProductDetail = () => {
     const [clicked, setClicked] = useState(false);
     const Products = useFetchData();
     const { id } = useParams();
-
+    // ⭐ get authenticated firebase user
+    const [userId, setUserId] = useState(null);
+    React.useEffect(() => { 
+      const auth = getAuth(); 
+      const unsubscribe = onAuthStateChanged(auth, (user) => { 
+        if (user) { setUserId(user.uid); // logged in 
+          } else { setUserId(null); // logged out 
+          } 
+        }); 
+        return () => unsubscribe(); 
+      }, []);
 
 
     const showToast = (msg) => {
@@ -72,15 +85,16 @@ export const ProductDetail = () => {
       </button>
       </div>
 
-      
       <section className="border-b pb-10">
       <ProductInfo 
         product = {product}
         addToCart = {addToCart}
         />
+      <LikeIt 
+            userId={userId}
+            itemId={product.id}
+          />
       </section>
-      
-
 
       <section className="border-b pb-10">
       <MyCart 
