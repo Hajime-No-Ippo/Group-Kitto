@@ -55,7 +55,9 @@ const UserProfile = () => {
         </button>
       )}
 
-      {showLikes && userId && <LikeItList userId={userId} />}
+      {showLikes && userId && user && (
+        <LikeItList userId={userId} username={user.username} />
+      )}
     </div>
   );
 };
