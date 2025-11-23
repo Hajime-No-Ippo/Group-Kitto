@@ -1,30 +1,25 @@
-import React from 'react'
-import user from '../Data/user'
+import React from "react";
 
-
-const UserInfoCard = () => {
-  
-  const currentUser = user[0]; // Replace with actual user data retrieval logic
-
+const UserInfoCard = ({ user }) => {
+  if (!user) return null;
 
   return (
-    <div className="flex bg-red-500 text-yellow-200 text-4xl font-bold p-10 rounded-xl shadow-lg">
-      <h1>This is user info</h1>
-      <h1>
-        User Info Card Component
-        <img 
-                src={currentUser.avatar} 
-                alt="avatar" 
-                className=" flex w-60 rounded-full mt-4 justify-center" 
-            />
+    <div className="max-w-md w-full bg-white shadow-lg rounded-2xl p-8 flex flex-col items-center text-gray-800 transition transform hover:scale-105 hover:shadow-2xl">
+      <img
+        src="/img/UserAvatar.jpg"
+        alt="avatar"
+        className="w-32 h-32 rounded-full border-4 border-indigo-500 shadow-md"
+      />
 
-        <p>Username: {currentUser.username}</p>
-            <p>Email: {currentUser.email}</p>
-            <p>Joined: {currentUser.joined}</p>
+      <h2 className="mt-4 text-3xl font-extrabold">{user.username}</h2>
 
-      </h1>
-      </div>
-  )
-}
+      <p className="mt-2 text-gray-600 text-lg">Email: {user.email}</p>
 
-export default UserInfoCard
+      <p className="mt-1 text-gray-500 text-sm">
+        Joined: {user.joinedAt?.toDate().toLocaleDateString()}
+      </p>
+    </div>
+  );
+};
+
+export default UserInfoCard;

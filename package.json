@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "firebase": "^12.6.0",
-    "react-router-dom": "^7.9.6"
+    "react-router-dom": "^7.9.6",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
