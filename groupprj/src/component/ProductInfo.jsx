@@ -2,11 +2,14 @@ import React from 'react'
 import ProductGallery from './ProductGallery.jsx';
 import { useNavigate } from 'react-router-dom';
 import SpotlightCard from "@components/SpotlightCard.jsx";
+
 import '../style/SpotlightCard.css';
+// ⭐ added
+import LikeIt from "../component/likeItButton.jsx";  
 
 
 const ProductInfo = (props) => {
-  const {product, addToCart, clicked} = props;
+  const {product, addToCart, clicked, userId, sellerName} = props;
   const navigate = useNavigate();
   
 
@@ -45,8 +48,13 @@ const ProductInfo = (props) => {
                 <li className="font-light text-lg">Category: {product.category}</li>
                 <li className="font-light text-gray-900 text-lg">Price: ${product.price}</li> 
                 <li className="font-light text-lg">Condition: {product.condition}</li>
-                <li className="font-light text-lg">Seller: {product.seller}</li>
+                <li className="font-light text-lg">Seller: {sellerName}</li>
               </ul>
+
+              <LikeIt 
+                userId={userId}
+                itemId={product.id}
+              />
 
               <div className="flex mt-6 space-x-1.5">
               <button 
@@ -60,7 +68,7 @@ const ProductInfo = (props) => {
               <button 
                 className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-blue-600 transition" 
                 onClick={() => navigate("/chat", {
-                  state: { seller: product.seller }
+                  state: { sellerName }
                 })}>
                 Chat with Seller
               </button>

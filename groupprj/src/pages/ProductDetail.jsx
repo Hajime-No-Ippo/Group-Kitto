@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import Products from '../Data/ProductData'
 import MyCart from '../component/MyCart'
@@ -6,9 +6,12 @@ import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
 import useFetchData from "../component/FetchData.jsx";
+
 // ⭐ added
 import LikeIt from "../component/likeItButton";  
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 
 /*
@@ -25,7 +28,10 @@ export const ProductDetail = () => {
     const { id } = useParams();
     // ⭐ get authenticated firebase user
     const [userId, setUserId] = useState(null);
-    React.useEffect(() => { 
+    const[sellerName, setSellerName] = useState("");
+
+
+    useEffect(() => { 
       const auth = getAuth(); 
       const unsubscribe = onAuthStateChanged(auth, (user) => { 
         if (user) { setUserId(user.uid); // logged in 
@@ -46,6 +52,21 @@ export const ProductDetail = () => {
     }
 
     const product = Products.find(p => p.id === id);
+
+    useEffect(() => {
+      async function getUser() {
+        if(!product?.uid) return
+        const ref = doc(db, "users",product.uid)
+        const snap = await getDoc(ref)
+
+        if(snap.exists()){
+          setSellerName(snap.data().username)
+        }else{
+          setSellerName("Unknown")
+        }
+      }
+      getUser();
+    },[product?.uid]);
 
     const addToCart = (item) => {
       if(cart.find(i => i.name === item.name)) {
@@ -89,12 +110,12 @@ export const ProductDetail = () => {
       <ProductInfo 
         product = {product}
         addToCart = {addToCart}
+        userId = {userId}
+        sellerName = {sellerName}
         />
-      <LikeIt 
-            userId={userId}
-            itemId={product.id}
-          />
       </section>
+      
+
 
       <section className="border-b pb-10">
       <MyCart 
@@ -108,7 +129,7 @@ export const ProductDetail = () => {
 
       
 
-  <h2 className="font-semibold mt-4">Comments:</h2>
+  
       <section className="pb-10">
       <CommentList 
         Comments = {Comments}

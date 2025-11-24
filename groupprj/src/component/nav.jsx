@@ -1,6 +1,7 @@
 // src/component/nav.jsx
 import React from "react";
 import {logout} from "../service/authService";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Nav = () => {
@@ -8,6 +9,8 @@ const Nav = () => {
     e.preventDefault();
     window.location.href = "/userProfile";
   };
+
+  const navigate = useNavigate();
 
   const handleLogOut = async (e) => {
     e.preventDefault();
@@ -20,22 +23,34 @@ const Nav = () => {
   }
 
   return (
-    <nav className="navbar navbar-dark bg-dark px-4">
+    <nav className="w-full bg-black text-white px-8 py-3 flex justify-between shadow">
+
       {/* Logo - click this logo always go to home */}
-      <a className="navbar-brand font-semibold" href="/">
+      <a className="text-2xl navbar-brand font-semibold justify-start no-underline 
+" href="/">
         Kitto
         <span className="font-extralight ml-1">Market</span>
       </a>
-
+<div className="justify-between flex space-x-7">
       {/* Right side button */}
-      <a className="btn btn-outline-light" href="/profile" onClick={handleOnclick}>
+      <a className=" font-extralight flex gap-1 text-white no-underline hover:underline 
+" href="/profile" onClick={handleOnclick}>
         My Profile
       </a>
 
+      {/* Right side button */}
+      <a className=" font-extralight flex  gap-1 no-underline hover:underline text-white
+" href="/likeit" onClick={handleOnclick}>
+        My Likes
+      </a>
+
+
       {/* Sign out button */}
-      <a className="btn btn-outline-light"  href="/" onClick={handleLogOut}>
+      <a className="font-extralight flex gap-1 no-underline hover:underline text-white
+"  href="/" onClick={handleLogOut}>
         Sign Out
       </a>
+      </div>
     </nav>
   );
 };

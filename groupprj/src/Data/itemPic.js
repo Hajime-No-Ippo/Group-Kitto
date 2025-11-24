@@ -56,6 +56,10 @@ const dummyPics = [
     itemID:"xEtfQ01LPB8AzbsGnzX0",
     img: ["/img/java_books.jpg"],
   },
+  {
+    itemID:"HbKVxWMFHuy1POD96O93",
+    img: ["/img/comic_books.jpg"],
+  },
 ];
 
 export default dummyPics;

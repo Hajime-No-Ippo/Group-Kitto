@@ -14,7 +14,7 @@ export function Chatbox() {
   const currentUser = user[0].username; // Simulated logged-in user
 
   const location = useLocation();
-  const seller = location.state?.seller || "Seller";
+  const seller = location.state?.sellerName || "Seller";
   //console.log("Chatting with seller:", seller);
 
   const appendMessage = (text, type = "") => {
@@ -99,52 +99,52 @@ socket.on("chat-message", (data) => {
 
   return (
   <div className="flex w-full h-screen bg-gray-100">
-    <div className="w-full h-full bg-white rounded-2xl flex flex-col overflow-hidden">
+    <div className="w-full bg-white rounded-2xl flex flex-col overflow-hidden">
 
 
-      {/* Header */}
-      <header className="flex border-b px-6 py-4 bg-gray-50 rounded-t-2xl">
-        <button
-        className="btn btn-outline-secondary mt-2 mb-4 translate-y-[-10px]"
-        onClick={() => navigate("/home")}
-      >
-        ← Back
-      </button>
-        <h2 className="text-2xl font-semibold translate-x-[10px]">{seller}</h2>
-
-      </header>
-       <div className="flex flex-col flex-1 overflow-y-auto">
-      {/* Messages */}
-      <div
-        ref={messageContainer}
-        className="flex flex-col w-full overflow-y-auto p-4 space-y-3 gap-3"
-      ></div>
-      </div>
-
-      {/* Footer Input */}
-      <footer className="border-t p-4 bg-gray-50 sticky bottom-0 left-0 z-50">
-        <form
-          onSubmit={sendMessage}
-          className="flex items-center gap-3"
-        >
-          <input
-            ref={messageInput}
-            type="text"
-            placeholder="Type a message..."
-            className="flex-1 px-4 py-2 rounded-lg border border-gray-300 
-                       focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-
-          <button
-            type="submit"
-            className="px-5 py-2 bg-black text-white rounded-lg 
-                       hover:bg-gray-800 transition"
+        {/* Header */}
+        <header className="flex border-b px-4 py-4 bg-gray-50 rounded-t-2xl">
+            <button
+            className="btn btn-outline-secondary mt-2 translate-y-[-10px]"
+            onClick={() => navigate("/home")}
           >
-            Send
+            ← Back
           </button>
-        </form>
-      </footer>
+            <h2 className="text-2xl font-semibold translate-x-[10px]">{seller}</h2>
 
+        </header>
+
+       <div className="flex flex-col flex-1 overflow-y-auto">
+        {/* Messages */}
+        <div
+          ref={messageContainer}
+          className="flex flex-col w-full overflow-y-auto p-4 space-y-3 gap-3"
+        ></div>
+        </div>
+
+        {/* Footer Input */}
+        <footer className="border-t p-4 bg-gray-50 sticky bottom-0 left-0 z-50">
+          <form
+            onSubmit={sendMessage}
+            className="flex items-center gap-3"
+          >
+            <input
+              ref={messageInput}
+              type="text"
+              placeholder="Type a message..."
+              className="flex-1 px-4 py-2 rounded-lg border border-gray-300 
+                        focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <button
+              type="submit"
+              className="px-5 py-2 bg-black text-white rounded-lg 
+                        hover:bg-gray-800 transition"
+            >
+              Send
+            </button>
+          </form>
+        </footer>
     </div>
   </div>
 );
