@@ -7,7 +7,7 @@ import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
 import useFetchData from "../component/FetchData.jsx";
 // ⭐ added
-import LikeIt from "../component/LikeIt";  
+import LikeIt from "../component/likeItButton";  
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 

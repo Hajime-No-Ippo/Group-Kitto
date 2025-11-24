@@ -3,7 +3,6 @@ import dummyPics from "../Data/itemPic.js";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect } from "react";
 
-
 import React from 'react'
 
 const useFetchData = () => {
