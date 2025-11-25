@@ -53,7 +53,7 @@ export const ProductDetail = () => {
     }
 
     const product = Products.find(p => p.id === id);
-    const user = 
+
 
     useEffect(() => {
       async function getUser() {
@@ -95,7 +95,10 @@ export const ProductDetail = () => {
         setComments([...Comments, newComment]);
     }
 
-    const sumAllItems = cart.reduce((a, b) => a + b.price, 0);
+    
+  {/*Reduce the sum*/}
+    const sumAllItems =
+      cart.length===0?0 :cart.reduce((a, b) => a + Number(b.price), 0);
 
     const clearCart = () => {setCart([]); setClicked(false)}
 

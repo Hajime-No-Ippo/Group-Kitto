@@ -37,8 +37,12 @@ const MyCart = (props) => {
                 
                 spotlightColor="rgba(0, 0, 0, 0.27)"
                 className=" bg-transparent">
-        <div className="flex w-full m-4" >
-            {props.cart.length === 0 ? <h2 className="font-semibold">Your cart is Empty</h2> :
+        <div className="flex w-full h-full m-4" >
+            {props.cart.length === 0 ?  <div className="flex item-center justify-center rounded-2xl bg-white p-4 w-full h-full border-2 border-dashed">
+                      <h2 className="text-sm text-gray-500 w-full justify-center text-center">
+                          "Your cart is empty."
+                      </h2>
+                    </div> :
         <h2 className="font-semibold">You had selected: {props.cart.length} items</h2>   
     }
         <div className="flex w-full m-4 justify-end translate-y-[-20px] translate-x-[-25px]">

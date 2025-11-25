@@ -24,7 +24,7 @@ const CommentList = (props) => {
                           Be the first to review “{product.name}”
                       </h3>
                     <div className="flex item-center justify-center rounded-2xl bg-white p-4 w-full h-full border-2 border-dashed">
-                      <p className="text-sm text-gray-500 text-center w-full">
+                      <p className="text-sm text-gray-500 w-full justify-center text-center">
                           "There are no reviews yet."
                       </p>
                     </div>
