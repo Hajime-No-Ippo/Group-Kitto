@@ -29,6 +29,7 @@ export const ProductDetail = () => {
     // ⭐ get authenticated firebase user
     const [userId, setUserId] = useState(null);
     const[sellerName, setSellerName] = useState("");
+    const[username, setUserName] = useState("");
 
 
     useEffect(() => { 
@@ -52,6 +53,7 @@ export const ProductDetail = () => {
     }
 
     const product = Products.find(p => p.id === id);
+    const user = 
 
     useEffect(() => {
       async function getUser() {
@@ -67,6 +69,16 @@ export const ProductDetail = () => {
       }
       getUser();
     },[product?.uid]);
+
+    useEffect(() => {
+      async function getCommenter() {
+        if(!userId) return
+        const ref1 = doc(db, "users",userId)
+        const snap1 = await getDoc(ref1)
+        setUserName(snap1.data().username)
+    }
+    getCommenter();
+    },[userId]);
 
     const addToCart = (item) => {
       if(cart.find(i => i.name === item.name)) {
@@ -112,6 +124,7 @@ export const ProductDetail = () => {
         addToCart = {addToCart}
         userId = {userId}
         sellerName = {sellerName}
+        
         />
       </section>
       
@@ -135,6 +148,7 @@ export const ProductDetail = () => {
         Comments = {Comments}
         handleComments = {handleComments}
         product = {product}
+        username = {username}
       />     
       </section>
       </div>
