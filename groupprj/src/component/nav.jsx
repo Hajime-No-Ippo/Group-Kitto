@@ -25,7 +25,7 @@ const Nav = () => {
         href="/home"
         className="text-2xl font-bold tracking-wide no-underline text-white hover:opacity-80 transition"
       >
-        Kitto<span className="font-light ml-1">Market</span>
+        GreenCycle<span className="font-light ml-1"> Market</span>
       </a>
 
       <div className="flex space-x-7">

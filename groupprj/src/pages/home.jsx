@@ -23,10 +23,10 @@ export default function Home() {
   return (
     <>
       <h1 className="font-semibold text-center mt-10">
-        Welcome to Kitto Market
+        Choose Better. Live Greener.
       </h1>
       <h1 className="font-light text-center mt-1 italic">
-        Discover what you need
+        Every item reused saves a piece of our planet.
       </h1>
 
       <div className="container mt-2">
