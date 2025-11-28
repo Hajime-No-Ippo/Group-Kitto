@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetchData from "../component/FetchData.jsx";
-import "../style/marketUi.css";
+import "../style/theme.css";
 
 export default function SearchResult() {
   const navigate = useNavigate();
@@ -35,21 +35,22 @@ export default function SearchResult() {
   }, [Products, query, category, condition, sortBy]);
 
   return (
-    <div className="container mt-4">
-      <h3>
-        Search Results for: <span className="text-primary">{query}</span>
+    <div className="max-w-[1320px] mx-auto px-4 mt-4">
+      <h3 className="text-2xl font-bold text-[var(--text-main)]">
+        Search Results for:{" "}
+        <span className="text-[var(--primary)]">{query}</span>
       </h3>
 
       <button
-        className="btn btn-outline-secondary mt-2 mb-4"
+        className="px-4 py-2 mt-2 mb-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
         onClick={() => navigate("/home")}
       >
         ← Back to Home
       </button>
 
-      <div className="d-flex gap-3 mb-4">
+      <div className="flex gap-3 mb-4">
         <select
-          className="form-select"
+          className="flex-1"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
@@ -62,7 +63,7 @@ export default function SearchResult() {
         </select>
 
         <select
-          className="form-select"
+          className="flex-1"
           value={condition}
           onChange={(e) => setCondition(e.target.value)}
         >
@@ -74,7 +75,7 @@ export default function SearchResult() {
         </select>
 
         <select
-          className="form-select"
+          className="flex-1"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
         >
@@ -85,20 +86,24 @@ export default function SearchResult() {
         </select>
       </div>
 
-      <div className="row g-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
         {filteredProducts.length === 0 ? (
-          <p className="text-danger fw-bold fs-5">No products found.</p>
+          <p className="col-span-full text-red-600 font-bold text-lg">
+            No products found.
+          </p>
         ) : (
           filteredProducts.map((item) => (
-            <div key={item.id} className="col-6 col-md-4 col-lg-3 col-xl-2">
+            <div key={item.id}>
               <div
-                className="card h-100 clickable-card"
+                className="clickable-card h-full"
                 onClick={() => navigate(`/product/${item.id}`)}
               >
-                <img src={item.img} className="card-img-top" alt={item.name} />
-                <div className="card-body text-center p-2">
-                  <p className="fw-semibold small m-0">{item.name}</p>
-                  <p className="small text-muted">${item.price}</p>
+                <img src={item.img} alt={item.name} />
+                <div className="card-body">
+                  <p className="font-semibold text-sm m-0">{item.name}</p>
+                  <p className="text-sm text-[var(--text-muted)] mt-1">
+                    ${item.price}
+                  </p>
                 </div>
               </div>
             </div>

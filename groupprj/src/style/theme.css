@@ -1,0 +1,114 @@
+/* Tailwind Core */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand Theme Variables */
+:root {
+  --primary: #006442;
+  --accent-btn: #ffe552;
+  --text-main: #006442;
+  --text-muted: #3c3c3b;
+  --bg-soft: #ffffff;
+  --nav-bg: #f9f4ec;
+  --border: rgba(0, 0, 0, 0.07);
+}
+
+/* Global Defaults */
+@layer base {
+  body {
+    background-color: var(--bg-soft);
+    color: var(--text-main);
+    font-family: "Poppins", sans-serif;
+  }
+
+  input,
+  select,
+  textarea {
+    @apply border border-[var(--border)] rounded-lg p-3;
+  }
+}
+
+/* Typography */
+@layer components {
+  h1 {
+    @apply text-[2.1rem] font-semibold text-center;
+    color: var(--text-main);
+  }
+
+  h1 + h1 {
+    @apply opacity-90 font-light text-[1.1rem];
+    color: var(--text-muted);
+  }
+
+  /* Search Input Group */
+  .input-group {
+    @apply max-w-[650px] mx-auto my-[26px] flex items-center bg-white rounded-[50px] border overflow-hidden;
+    border-color: var(--border);
+  }
+
+  .input-group input {
+    @apply flex-1 border-0 px-[22px] py-[15px] text-base focus:outline-none;
+    color: var(--text-main);
+  }
+
+  .input-group input::placeholder {
+    @apply opacity-70;
+    color: var(--text-muted);
+  }
+
+  .input-group button {
+    @apply border-0 font-semibold px-7 h-12 rounded-[50px] transition hover:brightness-95;
+    background: var(--accent-btn);
+    color: var(--primary);
+  }
+
+  /* Product Cards */
+  .clickable-card {
+    @apply bg-white rounded-[14px] cursor-pointer transition-all duration-200 overflow-hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .clickable-card:hover {
+    @apply shadow-lg -translate-y-1;
+  }
+
+  .clickable-card img {
+    @apply w-full aspect-square object-cover;
+    padding: 12px;
+  }
+
+  .card-body {
+    @apply text-center px-3 pb-3 pt-1;
+  }
+
+  .card-body p {
+    @apply text-[0.9rem] font-medium m-0;
+    color: var(--text-muted);
+  }
+
+  .card-body p:first-child {
+    @apply mb-1;
+  }
+}
+
+/* Utility Animation */
+@keyframes slide-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  20%,
+  80% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+.animate-slide {
+  animation: slide-up 2.2s ease forwards;
+}

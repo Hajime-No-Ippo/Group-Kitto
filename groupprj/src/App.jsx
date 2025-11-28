@@ -14,6 +14,7 @@ import LoginToast from "./component/LoginToast.jsx";
 import NoNavLayout from "./component/layout/NoNavLayout.jsx";
 import DefaultLayout from "./component/layout/DefaultLayout.jsx";
 import FetchData from "./component/FetchData.jsx";
+import "./style/theme.css";
 
 export default function App() {
   const [toast, setToast] = useState("");

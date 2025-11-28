@@ -1,0 +1,30 @@
+/* Tailwind Core */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand Theme Variables */
+:root {
+  --primary: #006442;
+  --accent-btn: #ffe552;
+  --text-main: #006442;
+  --text-muted: #3c3c3b;
+  --bg-soft: #ffffff;
+  --nav-bg: #f9f4ec;
+  --border: rgba(0, 0, 0, 0.07);
+}
+
+/* Global Defaults */
+@layer base {
+  body {
+    background-color: var(--bg-soft);
+    color: var(--text-main);
+    font-family: "Poppins", sans-serif;
+  }
+
+  input,
+  select,
+  textarea {
+    @apply border border-[var(--border)] rounded-lg p-3;
+  }
+}

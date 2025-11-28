@@ -26,40 +26,38 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12 px-4">
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-8">My Profile</h1>
+    <div className="min-h-screen bg-[var(--bg-soft)] flex flex-col items-center py-12 px-6 font-brand">
+      {/* Title */}
+      <h1 className="text-3xl font-semibold text-[var(--primary)] tracking-wide mb-10">
+        My Profile
+      </h1>
 
+      {/* Back Button */}
       <button
-        className="self-start mb-6 px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+        className="self-start mb-8 px-4 py-2 border border-[var(--primary)] text-[var(--primary)] rounded-xl hover:bg-[var(--accent-btn)] hover:text-[var(--primary)] transition"
         onClick={() => navigate("/home")}
       >
         ← Back to Home
       </button>
 
+      {/* User Info */}
       {user && (
-        <div className="w-full max-w-4xl flex justify-center mb-6">
+        <div className="w-full max-w-3xl flex justify-center mb-10">
           <UserInfoCard user={user} />
         </div>
       )}
 
-      {/* ------ New Buttons Area ------ */}
-      <div className="flex gap-6 mt-6">
+      {/* Action Buttons */}
+      <div className="flex flex-wrap gap-6 mt-6 justify-center">
         <button
-          className="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition"
+          className="px-6 py-3 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-xl shadow hover:shadow-md transition"
           onClick={() => navigate("/likeit")}
         >
-          ⭐ Favorites
+          ❤️ Favorites
         </button>
 
         <button
-          className="px-6 py-2 bg-purple-500 text-white rounded-lg shadow hover:bg-purple-600 transition"
-          onClick={() => navigate("/chatbox")}
-        >
-          💬 Chatbox
-        </button>
-
-        <button
-          className="px-6 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
+          className="px-6 py-3 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-xl shadow hover:shadow-md transition"
           onClick={() => navigate("/additem")}
         >
           ➕ Add Item
