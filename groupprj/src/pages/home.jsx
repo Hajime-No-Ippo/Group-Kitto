@@ -78,7 +78,7 @@ export default function Home() {
         {/*Post Button */}
         <div className="w-full flex justify-center">
           <button
-            className="px-6 py-3 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-xl shadow hover:shadow-md transition"
+            className="px-6 py-3 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-xl "
             onClick={() => navigate("/addItem")}
           >
             + Post New Item

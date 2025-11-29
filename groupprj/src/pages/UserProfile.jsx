@@ -4,6 +4,7 @@ import { auth, db } from "../firebase.js";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import BackToHome from "../component/BackToHome.jsx";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -33,12 +34,9 @@ const UserProfile = () => {
       </h1>
 
       {/* Back Button */}
-      <button
-        className="self-start mb-8 px-4 py-2 border border-[var(--primary)] text-[var(--primary)] rounded-xl hover:bg-[var(--accent-btn)] hover:text-[var(--primary)] transition"
-        onClick={() => navigate("/home")}
-      >
-        ← Back to Home
-      </button>
+      <div className="self-start mb-8">
+        <BackToHome />
+      </div>
 
       {/* User Info */}
       {user && (

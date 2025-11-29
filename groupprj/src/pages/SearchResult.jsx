@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetchData from "../component/FetchData.jsx";
 import "../style/theme.css";
+import BackToHome from "../component/BackToHome.jsx";
 
 export default function SearchResult() {
   const navigate = useNavigate();
@@ -35,22 +36,22 @@ export default function SearchResult() {
   }, [Products, query, category, condition, sortBy]);
 
   return (
-    <div className="max-w-[1320px] mx-auto px-4 mt-4">
-      <h3 className="text-2xl font-bold text-[var(--text-main)]">
+    <div className="max-w-[1320px] mx-auto px-4 py-8">
+      {/* Back Button */}
+      <div className="mb-6">
+        <BackToHome />
+      </div>
+
+      {/* Title */}
+      <h3 className="text-3xl font-bold text-[var(--text-main)] mb-8">
         Search Results for:{" "}
         <span className="text-[var(--primary)]">{query}</span>
       </h3>
 
-      <button
-        className="px-4 py-2 mt-2 mb-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
-        onClick={() => navigate("/home")}
-      >
-        ← Back to Home
-      </button>
-
-      <div className="flex gap-3 mb-4">
+      {/* Filters */}
+      <div className="flex gap-3 mb-8 max-w-[900px]">
         <select
-          className="flex-1"
+          className="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg bg-white text-[var(--text-main)]  focus:outline-none focus:ring-2 focus:ring-[var(--accent-btn)] focus:border-transparent cursor-pointer"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
@@ -63,7 +64,7 @@ export default function SearchResult() {
         </select>
 
         <select
-          className="flex-1"
+          className="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg bg-white text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-btn)] focus:border-transparent cursor-pointer"
           value={condition}
           onChange={(e) => setCondition(e.target.value)}
         >
@@ -75,7 +76,7 @@ export default function SearchResult() {
         </select>
 
         <select
-          className="flex-1"
+          className="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg bg-white text-[var(--text-main)]focus:outline-none focus:ring-2 focus:ring-[var(--accent-btn)] focus:border-transparent cursor-pointer"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
         >
@@ -86,9 +87,10 @@ export default function SearchResult() {
         </select>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+      {/* Products Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-6">
         {filteredProducts.length === 0 ? (
-          <p className="col-span-full text-red-600 font-bold text-lg">
+          <p className="col-span-full text-red-600 font-bold text-lg text-center py-12">
             No products found.
           </p>
         ) : (
