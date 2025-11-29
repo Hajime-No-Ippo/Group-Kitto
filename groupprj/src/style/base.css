@@ -1,30 +1,45 @@
-/* Tailwind Core */
+/* This file contains global configuration:
+   1.Tailwind CSS imports
+   2.CSS variable definitions
+   3.Global element default styles */
+
+/* Tailwind Core Imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Brand Theme Variables */
+/* Brand Theme Variables
+   Define color scheme and design tokens
+   Usage: color: var(--primary); */
 :root {
-  --primary: #006442;
-  --accent-btn: #ffe552;
-  --text-main: #006442;
-  --text-muted: #3c3c3b;
-  --bg-soft: #ffffff;
-  --nav-bg: #f9f4ec;
-  --border: rgba(0, 0, 0, 0.07);
+  --primary: #006442; /* Primary brand color */
+  --accent-btn: #ffe552; /* Accent color for buttons */
+  --text-main: #006442; /* Main text color */
+  --text-muted: #3c3c3b; /* Muted/secondary text color */
+  --bg-soft: #ffffff; /* Soft background color */
+  --nav-bg: #f9f4ec; /* Navigation background */
+  --border: rgba(0, 0, 0, 0.07); /* Border color with transparency */
 }
 
-/* Global Defaults */
+/* Global Element Styles
+   Default styles applied to all instances */
 @layer base {
+  /* Body defaults */
   body {
     background-color: var(--bg-soft);
     color: var(--text-main);
     font-family: "Poppins", sans-serif;
   }
 
+  /* Form elements - inputs, selects, textareas */
   input,
   select,
   textarea {
     @apply border border-[var(--border)] rounded-lg p-3;
+  }
+
+  /* Select dropdown - extra padding for arrow */
+  select {
+    @apply pr-10;
   }
 }

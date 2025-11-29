@@ -46,7 +46,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* --- Filters --- */}
+          {/* Filters */}
           <div className="flex gap-3 max-w-[650px] mx-auto">
             <select
               className="flex-1 px-4 py-3 border border-[var(--border)] rounded-lg bg-white text-[var(--text-main)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-btn)] focus:border-transparent cursor-pointer"
