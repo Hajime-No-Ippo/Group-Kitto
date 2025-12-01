@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetchData from "../component/FetchData.jsx";
 import "../style/theme.css";
-import BackToHome from "../component/BackToHome.jsx";
 
 export default function SearchResult() {
   const navigate = useNavigate();
@@ -37,10 +36,6 @@ export default function SearchResult() {
 
   return (
     <div className="max-w-[1320px] mx-auto px-4 py-8">
-      {/* Back Button */}
-      <div className="mb-6">
-        <BackToHome />
-      </div>
 
       {/* Title */}
       <h3 className="text-3xl font-bold text-[var(--text-main)] mb-8">

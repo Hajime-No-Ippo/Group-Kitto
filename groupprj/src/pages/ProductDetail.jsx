@@ -5,7 +5,6 @@ import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
 import useFetchData from "../component/FetchData.jsx";
-import BackToHome from "@/component/BackToHome";
 
 // ⭐ added
 import LikeIt from "../component/likeItButton";
@@ -143,10 +142,6 @@ async function deleteComment(productId, commentId) {
         {/* RENDER THE TOAST HERE */}
         {toast && <Toast message={toast} />}
 
-          {/* Back Button */}
-        <div className="self-start m-8">
-          <BackToHome />
-        </div>
 
       <section className="border-b pb-10">
       <ProductInfo 

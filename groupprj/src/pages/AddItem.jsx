@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { db, auth } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import BackToHome from "../component/BackToHome.jsx";
 
 export default function AddItem() {
   const [name, setName] = useState("");
@@ -53,22 +54,11 @@ export default function AddItem() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen p-0 m-0">
-      {/* Top bar with Back Button */}
-      <div className="flex align-right gap-6 m-6">
-        <button
-          className="btn btn-outline-secondary mt-2 mb-4"
-          onClick={() => navigate("/home")}
-        >
-          ← Back to Home
-        </button>
-        <button
-          className="btn btn-outline-secondary mt-2 mb-4"
-          onClick={() => navigate("/likeit")}
-        >
-          ← LikeIt
-        </button>
-      </div>
+    <div className="bg-gray-50 min-h-screen py-12 px-6">
+      {/* Title */}
+      <h1 className="text-3xl font-semibold text-[var(--primary)] tracking-wide mb-10">
+        Post New Item
+      </h1>
 
       {/* Main form area */}
       <div className="flex justify-center mt-8 px-6">
@@ -76,9 +66,7 @@ export default function AddItem() {
           onSubmit={handleSubmit}
           className="w-full max-w-3xl bg-white border border-gray-200 rounded-lg shadow-sm p-10"
         >
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">
-            Publish a New Item
-          </h2>
+
 
           <div className="grid grid-cols-2 gap-6">
             <div className="col-span-2">
@@ -148,7 +136,7 @@ export default function AddItem() {
 
           <button
             type="submit"
-            className="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md py-3 transition-all"
+            className="mt-8 w-full bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-md py-3 transition-all"
           >
             Publish Item
           </button>

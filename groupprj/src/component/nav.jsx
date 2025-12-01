@@ -21,6 +21,8 @@ const Nav = () => {
       {/* Main Navigation */}
       <div className="w-full bg-[var(--nav-bg)] shadow-brand border-b border-[var(--border)]">
         <nav className="max-w-[1200px] mx-auto px-8 py-3 flex justify-between items-center font-brand text-brand">
+
+
           {/* Logo */}
           <a
             href="/home"
