@@ -7,35 +7,49 @@ import '../style/SpotlightCard.css';
 // ⭐ added
 import LikeIt from "../component/likeItButton.jsx";  
 
-
 const ProductInfo = (props) => {
-  const {product, addToCart, clicked, userId, sellerName} = props;
-  const navigate = useNavigate();
+const {product, clicked, userId, sellerName, sellerEmail} = props;
   
+const handleEmailSeller = () => {
+  const email = sellerEmail;           // e.g., "eva@gmail.com"
+  const productName = product.name;           // e.g., "Bluetooth Speaker"
+  const productId = product.id;                      // optional
+  const name = product.sellerName || "Seller"; // Eva
 
+  const subject = `Inquiry about ${productName}`;
+  const body = `Hi ${name},%0D%0A%0D%0A`
+             + `Hope this letter could reach you well. %0D%0A`
+             + `I'm interested in your product "${productName}".%0D%0A`
+             + `Product ID: ${productId}%0D%0A%0D%0A`
+             + `Is it still available?%0D%0A%0D%0AThank you!`;
 
+  const gmailURL =
+    `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${body}`;
+
+  window.open(gmailURL, "_blank");
+};
 
   if (!product) return <p>No product selected.</p>;
 
   return (
     <>
-    <h2 className="font-semibold m-4">ProductDetail:</h2>
+    
         <SpotlightCard
           spotlightColor="rgba(0, 0, 0, 0.27)"
-          className="relative flex rounded-2xl shadow-lg"
+          className="relative flex rounded-2xl shadow-md m-8"
         >
           
-        <div className="w-1/2 bg-white rounded-2xl">
-            <div key={product.id} className="w-full h-full scale-[1] !object-bottom">
+        <div className="w-1/2 rounded-2xl">
+            <div key={product.id} className="w-full h-full scale-[0.8] !object-bottom">
               {/* LEFT: Product Image */}
               <ProductGallery images={[product.img]}/> 
             </div>
         </div>
 
             {/* RIGHT: PRODUCT DETAILS */}
-            <div className="flex-1 p-10 space-y-6">
+            <div className="flex flex-col p-10 space-y-6 justify-center item-center ">
               {/* Title */}
-              <h1 className="text-2xl font-bold text-gray-900 italic">{product.name}</h1>
+              <h1 className="font-bold text-left">{product.name}</h1>
 
               {/* RIGHT: Product Description */}
               <h2 className="mb-6">
@@ -43,10 +57,9 @@ const ProductInfo = (props) => {
               </h2>
 
                 {/* RIGHT: Product Details */}
-              <div className="text-gray-800">
+              <h1 className="font-bold text-left">${product.price}</h1> 
               <ul className=" space-y-2 pl-0 ">
                 <li className="font-light text-lg">Category: {product.category}</li>
-                <li className="font-light text-gray-900 text-lg">Price: ${product.price}</li> 
                 <li className="font-light text-lg">Condition: {product.condition}</li>
                 <li className="font-light text-lg">Seller: {sellerName}</li>
               </ul>
@@ -56,25 +69,17 @@ const ProductInfo = (props) => {
                 itemId={product.id}
               />
 
-              <div className="flex mt-6 space-x-1.5">
-              <button 
-                disabled={clicked}
-                className="bg-opacity-0 text-blue-600 border-1 border-blue-600 py-2 !px-5 rounded-xl text-lg font-medium  hover:bg-blue-600 hover:text-white transition"
-                onClick={() => addToCart(product)}
+                <div className="flex mt-6 w-full">
+                <button
+                  className="w-full py-3 bg-[var(--primary)] text-white font-semibold rounded-full hover:bg-[var(--accent-btn)] hover:!text-[var(--primary)]"
+                  onClick={handleEmailSeller}
                 >
-               {!clicked ? "Add to cart" : "In the cart"}
-              </button>
+                  Email Seller
+                </button>
+                </div>
+              
+              </div>
 
-              <button 
-                className="bg-black text-white py-2 !px-5 rounded-xl text-lg font-medium shadow hover:!bg-blue-600 transition" 
-                onClick={() => navigate("/chat", {
-                  state: { sellerName }
-                })}>
-                Chat with Seller
-              </button>
-              </div>
-              </div>
-            </div>
             </SpotlightCard>
       </>
   )

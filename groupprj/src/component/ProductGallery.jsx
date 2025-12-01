@@ -7,7 +7,7 @@ const ProductGallery = ({images = []}) => {
 
   return (
 
-  <div className="h-full rounded-2xl inset-0 overflow-hidden translate-x-[0px] shadow-md">
+  <div className="h-full rounded-2xl inset-0 overflow-hidden translate-x-[0px] border border-2 border-brand">
             {limitedPics.length === 0 ? (
                 <p>No images available</p>
             ) : (

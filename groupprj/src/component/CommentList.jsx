@@ -1,47 +1,84 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useEffect, useState } from "react";
+import { db } from "../firebase"; 
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import { TrashIcon } from "@heroicons/react/24/solid";
+
 import SpotlightCard from "@components/SpotlightCard.jsx";
+
 import '../style/SpotlightCard.css';
 
 
 const CommentList = (props) => {
-  const { product, handleComments, Comments, username } = props;
+  const { product, addComment,currentUser,deleteComment } = props;
+  const [commentInput, setCommentInput] = useState("");
+  const [comments, setComments] = useState([]);
+
+
+   // Load comments from Firestore
+  useEffect(() => {
+    if (!product?.id) return;
+
+    const q = query(
+      collection(db, "items", product.id, "comments"),
+      orderBy("commentAt", "desc") // 🔥 Must match your Firestore field name
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setComments(
+        snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      );
+    });
+
+    return unsubscribe;
+  }, [product.id]);
 
   return (
-    <div>
+    
       <SpotlightCard
           spotlightColor="rgba(0, 0, 0, 0.27)"
-          className="flex w-full mx-auto justify-between p-4 rounded-2xl shadow-lg m-4"
+          className="flex justify-between p-4 rounded-2xl shadow-md m-8"
         >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
 
           {/* Comment reviewing area */}
-          <div className="space-y-1 mb-6 h-full">
-          <h2 className="font-semibold">Reviews:</h2>
-          <div className="m-2 space-y-2 w-full h-full mb-4 rounded-2xl">
-              {props.Comments.length === 0 ? (
-                <div className="mb-4 items-center justify-center rounded-2xl">
-                      <h3 className="pt-4 text-lg font-semibold">
-                          Be the first to review “{product.name}”
-                      </h3>
-                    <div className="flex item-center justify-center rounded-2xl bg-white p-4 w-full h-full border-2 border-dashed">
-                      <p className="text-sm text-gray-500 w-full justify-center text-center">
+          <div className="h-full">
+          <div className="space-y-6">
+              {comments.length === 0 ? (
+                <div className=" items-center justify-center rounded-2xl">
+                      <h3 className="font-bold text-brand mb-2">Be the first to rate "{product.name}" ...... </h3>
+                    <div className="flex item-center justify-center rounded-2xl bg-white p-40 w-full h-full border-2 border-dashed">
+                      <p className="text-sm text-gray-500 w-full h-full justify-center text-center">
                           "There are no reviews yet."
                       </p>
                     </div>
                 </div>
               ) : (
-                  Comments.slice(0,3).map((comment, index) => (
-                      <div key={index} className="flex rounded-2xl shadow-sm bg-white p-4 w-full item-center">
+                  comments.slice(0,3).map((c, index) => (
+                      <div key={index} className="flex rounded-2xl shadow-sm bg-white p-4 w-full justify-between item-center">
+                        <div className="flex">
                         <img
                             src="/img/UserAvatar.jpg"
                             alt="avatar"
-                            className="w-12 h-12 rounded-full border-1 border-indigo-500 shadow-sm"
+                            className="w-12 h-12 rounded-full border-1 border-brand shadow-sm"
                           />
                           <div className="flex flex-col ml-3">
-                          <p className="font-light text-sm text-gray-500 -mt-1">{username} 
+                          <p className="font-light text-sm text-brand">{c.username} 
                           </p>                      
-                            <span className="font-medium text-gray-900 text-md -mt-4">{comment}</span> 
-                          </div>                     
+                            <span className="font-medium text-brand text-md ">{c.message}</span> 
+                             
+                          </div>
+                        </div>
+                          <div className="flex item-center justify-center">                     
+                            {currentUser && (
+                                <button
+                                className="justify-center align-right"
+                                onClick={() => deleteComment(product.id, c.id)}
+                              >
+                                <TrashIcon className="w-5 h-5 text-brand hover:text-red-700 transition" />
+                            </button>
+                            )}
+                            </div>
                           {/*if(Comment.length>3){<a href={detailToggle}>Show details</a>}*/}
                       </div>
                   ))
@@ -54,8 +91,8 @@ const CommentList = (props) => {
             <div className="space-y-6">
               {/* Rating row (static / simple for now) */}
                 <div>
-                <h3 className="font-bold text-gray-800 mb-2">Your Rating: </h3>
-                <div className="flex items-center gap-1 text-xl text-amber-400">
+                <h3 className="font-bold text-brand mb-2">Your Rating: </h3>
+                <div className="flex items-center gap-1 text-xl text-brand">
                   <span>★</span>
                   <span>★</span>
                   <span>★</span>
@@ -64,10 +101,10 @@ const CommentList = (props) => {
                 </div>
                 </div>
                 <h3>Add a Comment:</h3>
-                  <form onSubmit={(e) => {
+                  <form onSubmit={async (e) => {
                     e.preventDefault();
-                    const newComment = e.target.elements.comment.value;
-                    handleComments(newComment);
+                    await addComment(product.id, currentUser, commentInput);
+                    setCommentInput("");
                     e.target.reset();
                   }}>
                   <div className="space-y-2">
@@ -79,25 +116,27 @@ const CommentList = (props) => {
                   </label>
                   <textarea
                     id="comment"
+                    value={commentInput}
                     name="comment"
                     required
                     rows={5}
                     className="w-full rounded-xl mb-2 border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-800  focus:ring-1 focus:ring-blue-500 focus:outline-none hover:ring-1 hover:ring-blue-500"
                     placeholder="Write your review here..."
+                    onChange={(e) => setCommentInput(e.target.value)} 
                   />
                   </div>
-                  <div className="space-x-2 flex">
-                  <button className="bg-opacity-0 text-gray-900 border-1 w-full border-gray-900 py-2 px-5 rounded-xl text-lg font-medium  hover:bg-black hover:text-white transition"
+                  <div className="space-x-4 flex">
+                  <button className="bg-opacity-0 text-[var(--primary)] border-1 w-full border-[var(--primary)] rounded-full text-lg font-medium  hover:bg-brand hover:text-white transition"
                   onClick={(e) => e.target.form.reset()}
                   >Discard</button>
-                  <button className="bg-black text-white py-2 px-5 w-full rounded-xl text-lg font-medium hover:!bg-blue-600 transition">Submit</button>
+                  <button className="w-full py-3 bg-[var(--primary)] text-white font-semibold rounded-full hover:bg-[var(--accent-btn)] hover:!text-[var(--primary)] transition">Submit</button>
                   </div>
                 </form>
                 </div>
           </div>
         </div>
        </SpotlightCard>
-      </div>
+      
   )
 }
 
