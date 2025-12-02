@@ -67,8 +67,8 @@ const SignUpPage = ({ showToast }) => {
           className="card !rounded-2xl p-4 shadow"
           style={{ width: "380px" }}
         >
-          <h2 className="text-center mb-3">Welcome to GreenCycle Market</h2>
-          <p className="text-center text-muted">You can Sign Up here</p>
+          <h2 className="text-center mb-3 text-[var(--primary)] font-semibold">Welcome to GreenCycle Market</h2>
+          <p className="text-center mb-2 text-muted">You can Sign Up here</p>
 
           <form onSubmit={handlesignUp}>
             <div className="mb-3">

@@ -54,8 +54,8 @@ function LoginPage({ showToast }) {
       ></div>
 
       <div className="card !rounded-2xl p-4 shadow" style={{ width: "380px" }}>
-        <h2 className="text-center mb-3">Welcome to GreenCycle Market</h2>
-        <p className="text-center text-muted">Please log in to continue</p>
+        <h2 className="text-center mb-3 text-[var(--primary)] font-semibold">Welcome to GreenCycle Market</h2>
+        <p className="text-center mb-2 text-muted">Please log in to continue</p>
 
         <form onSubmit={handleLogin}>
           <div className="mb-3">
