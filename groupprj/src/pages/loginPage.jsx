@@ -9,8 +9,6 @@ function LoginPage({ showToast }) {
   const [useremail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // click Login will direct to the Home page
-
   async function handleLogin(e) {
     e.preventDefault();
     try {
@@ -18,7 +16,6 @@ function LoginPage({ showToast }) {
       console.log("Logged in:", user);
       showToast(`${useremail} login successfully!`);
       navigate("/home");
-      // redirect to dashboard
     } catch (err) {
       alert("Login failed: " + err.message);
     }
@@ -26,19 +23,35 @@ function LoginPage({ showToast }) {
 
   return (
     <div
-      className=" container-fluid d-flex justify-content-center align-items-center"
-      style={{ height: "100vh", width: "1400px", backgroundColor: "#ffffffff" }}
+      className="container-fluid d-flex justify-content-center align-items-center position-relative"
+      style={{
+        height: "100vh",
+        width: "100vw",
+        overflow: "hidden",
+        padding: 0,
+        margin: 0,
+      }}
     >
-      {/* Background video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover"
-      >
-        <source src="/vid/background.mp4" type="video/mp4" />
-      </video>
+
+      {/* Background Image */}
+      <img
+        src="/img/background.jpg"
+        alt="Background"
+        className="position-absolute top-0 start-0 w-100 h-100"
+        style={{
+          objectFit: "cover",
+          zIndex: -2,
+        }}
+      />
+
+      {/* Light Green Overlay */}
+      <div
+        className="position-absolute top-0 start-0 w-100 h-100"
+        style={{
+          backgroundColor: "rgba(45, 78, 10, 0.19)", // light green tint
+          zIndex: -1,
+        }}
+      ></div>
 
       <div className="card !rounded-2xl p-4 shadow" style={{ width: "380px" }}>
         <h2 className="text-center mb-3">Welcome to GreenCycle Market</h2>
@@ -56,7 +69,7 @@ function LoginPage({ showToast }) {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mb-2">
             <label className="form-label">Password</label>
             <input
               type="password"
@@ -67,17 +80,22 @@ function LoginPage({ showToast }) {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary w-100 mb-2">
-            Login
+          <button
+          type="submit"
+          className="mt-3 w-100 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-md py-2 transition-all"
+          >
+          Login
           </button>
 
+
           <button
-            type="button"
-            className="btn btn-outline-secondary w-100"
-            onClick={() => navigate("/signup")}
-          >
-            Sign Up
+          type="button"
+          onClick={() => navigate("/signup")}
+          className="w-100 border border-[var(--accent-btn)] text-[var(--primary)] font-regular rounded-md py-2 mt-3 transition-all hover:bg-[var(--accent-btn)] hover:text-[var(--primary)]"
+        >
+          Sign Up
           </button>
+
         </form>
       </div>
     </div>
