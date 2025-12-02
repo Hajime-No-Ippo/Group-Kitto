@@ -40,13 +40,10 @@ const ProductInfo = (props) => {
         className="relative flex rounded-2xl shadow-md m-8"
       >
         <div className="w-1/2 rounded-2xl">
-          <div
-            key={product.id}
-            className="w-full h-full scale-[0.8] !object-bottom"
-          >
-            {/* LEFT: Product Image */}
-            <ProductGallery images={[product.img]} />
-          </div>
+            <div key={product.id} className="w-full h-full !object-bottom">
+              {/* LEFT: Product Image */}
+              <ProductGallery images={[product.img]}/> 
+            </div>
         </div>
 
         {/* RIGHT: PRODUCT DETAILS */}

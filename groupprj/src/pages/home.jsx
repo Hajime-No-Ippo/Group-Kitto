@@ -40,7 +40,7 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="border-0 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold px-7 h-12 rounded-[50px] hover:brightness-95 transition"
+              className="border-0 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold px-7 h-12 rounded-[50px] hover:brightness-95 translate-x-[-3px] transition"
             >
               Search
             </button>
@@ -78,7 +78,7 @@ export default function Home() {
         {/*Post Button */}
         <div className="w-full flex justify-center">
           <button
-            className="px-6 py-3 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-xl "
+            className="px-6 py-3 bg-[var(--accent-btn)] text-[var(--primary)] font-semibold rounded-full "
             onClick={() => navigate("/addItem")}
           >
             + Post New Item

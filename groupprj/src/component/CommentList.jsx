@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase"; 
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { TrashIcon } from "@heroicons/react/24/solid";
+import Toast from './Toast';
 
 import SpotlightCard from "@components/SpotlightCard.jsx";
 
@@ -24,6 +25,7 @@ const CommentList = (props) => {
       orderBy("commentAt", "desc") // 🔥 Must match your Firestore field name
     );
 
+    //Delete Comment 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setComments(
         snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
@@ -55,17 +57,20 @@ const CommentList = (props) => {
                 </div>
               ) : (
                   comments.slice(0,3).map((c, index) => (
+                    <>
+                    <h3 className="font-bold text-brand mb-2">Latest Review on "{product.name}"</h3>
                       <div key={index} className="flex rounded-2xl shadow-sm bg-white p-4 w-full justify-between item-center">
                         <div className="flex">
                         <img
                             src="/img/UserAvatar.jpg"
                             alt="avatar"
-                            className="w-12 h-12 rounded-full border-1 border-brand shadow-sm"
+                            className="w-12 h-12 rounded-full border-1 border-brand shadow-sm justify-center item-center"
                           />
                           <div className="flex flex-col ml-3">
-                          <p className="font-light text-sm text-brand">{c.username} 
+                          <p className="font-light text-md text-brand">{c.username} 
                           </p>                      
                             <span className="font-medium text-brand text-md ">{c.message}</span> 
+                            <p className="font-light text-sm text-muted">{c.commentAt?.toDate().toLocaleString()}</p> 
                              
                           </div>
                         </div>
@@ -81,6 +86,7 @@ const CommentList = (props) => {
                             </div>
                           {/*if(Comment.length>3){<a href={detailToggle}>Show details</a>}*/}
                       </div>
+                      </>
                   ))
               )}
             </div>
@@ -90,17 +96,8 @@ const CommentList = (props) => {
             <div className="w-full">
             <div className="space-y-6">
               {/* Rating row (static / simple for now) */}
-                <div>
-                <h3 className="font-bold text-brand mb-2">Your Rating: </h3>
-                <div className="flex items-center gap-1 text-xl text-brand">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span className="text-gray-300">★</span>
-                </div>
-                </div>
-                <h3>Add a Comment:</h3>
+                
+                <h3 className="font-bold text-brand mb-2">Add a Comment:</h3>
                   <form onSubmit={async (e) => {
                     e.preventDefault();
                     await addComment(product.id, currentUser, commentInput);
@@ -120,7 +117,7 @@ const CommentList = (props) => {
                     name="comment"
                     required
                     rows={5}
-                    className="w-full rounded-xl mb-2 border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-800  focus:ring-1 focus:ring-blue-500 focus:outline-none hover:ring-1 hover:ring-blue-500"
+                    className="w-full rounded-xl mb-2 border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-800  focus:ring-1 focus:ring-accent focus:outline-none hover:ring-1 hover:ring-accent"
                     placeholder="Write your review here..."
                     onChange={(e) => setCommentInput(e.target.value)} 
                   />
