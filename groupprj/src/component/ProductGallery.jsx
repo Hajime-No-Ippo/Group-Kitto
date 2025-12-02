@@ -1,29 +1,25 @@
-import React from 'react'
-import "../style/productGallery.css"
+import React from "react";
 
-
-const ProductGallery = ({images = []}) => {
+const ProductGallery = ({ images = [] }) => {
   const limitedPics = images.slice(0, 9);
 
   return (
+    <div className="h-full rounded-2xl inset-0 overflow-hidden translate-x-[0px] border border-2 border-brand">
+      {limitedPics.length === 0 ? (
+        <p>No images available</p>
+      ) : (
+        limitedPics.map((ims, index) => (
+          <div key={index}>
+            <img
+              className="bg-white w-full h-full "
+              src={ims}
+              alt={`Product Image ${index + 1}`}
+            />
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
 
-  <div className="h-full rounded-2xl inset-0 overflow-hidden translate-x-[0px] border border-2 border-brand">
-            {limitedPics.length === 0 ? (
-                <p>No images available</p>
-            ) : (
-                limitedPics.map((ims, index) => (
-                    <div key={index}>
-                        <img
-                        className="bg-white w-full h-full "
-                        src={ims} 
-                        alt={`Product Image ${index + 1}`} />
-                    </div>
-                ))
-            )}
-        </div>
-        
-
-  )
-}
-
-export default ProductGallery
+export default ProductGallery;

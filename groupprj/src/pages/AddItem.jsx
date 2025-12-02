@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { db, auth } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import BackToHome from "../component/BackToHome.jsx";
 
 export default function AddItem() {
   const [name, setName] = useState("");
@@ -66,8 +65,6 @@ export default function AddItem() {
           onSubmit={handleSubmit}
           className="w-full max-w-3xl bg-white border border-gray-200 rounded-lg shadow-sm p-10"
         >
-
-
           <div className="grid grid-cols-2 gap-6">
             <div className="col-span-2">
               <label className="block font-medium mb-1">Item Name</label>

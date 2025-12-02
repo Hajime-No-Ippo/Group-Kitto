@@ -1,7 +1,6 @@
 import useAuthUser from "../component/useAuthUser";
 import useLikedItems from "../component/useLikedItems";
 import LikedItemsList from "../component/LikedItemsList";
-import BackToHome from "../component/BackToHome.jsx";
 
 export default function LikedItemsPage() {
   const { user, loading } = useAuthUser();
@@ -16,15 +15,14 @@ export default function LikedItemsPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen py-12 px-6">
-         {/* Title */}
-         <h1 className="text-3xl font-semibold text-[var(--primary)] tracking-wide mb-10">
-           My Favorite
-         </h1>
+      {/* Title */}
+      <h1 className="text-3xl font-semibold text-[var(--primary)] tracking-wide mb-10">
+        My Favorite
+      </h1>
 
-    <div>
-      <LikedItemsList items={likedItems} />
+      <div>
+        <LikedItemsList items={likedItems} />
+      </div>
     </div>
-  </div>
-);
-
+  );
 }
