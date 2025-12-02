@@ -25,7 +25,7 @@ export default function LikedItemsList({ items }) {
               />
 
               <h3 className="text-lg font-semibold mt-3">{item.name}</h3>
-              <p className="text-xl font-bold text-blue-600">€{item.price}</p>
+              <p className="text-xl font-bold">€{item.price}</p>
 
               <p className="text-sm text-gray-400">
                 Liked on {item.likedAt.toDate().toLocaleString()}

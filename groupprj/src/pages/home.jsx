@@ -31,7 +31,7 @@ export default function Home() {
       <div className="max-w-[1320px] mx-auto px-4 mt-4">
         {/* --- Search Box --- */}
         <form onSubmit={handleSearch} className="mb-4">
-          <div className="max-w-[650px] mx-auto my-[26px] flex items-center bg-white rounded-[50px] border border-[var(--border)] overflow-hidden">
+          <div className="max-w-[650px] mx-auto my-[26px] flex items-center bg-white rounded-[50px] border border-[var(--border)] overflow-hidden pr-1">
             <input
               type="text"
               name="search"
