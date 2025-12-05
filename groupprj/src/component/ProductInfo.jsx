@@ -8,7 +8,7 @@ import "../style/SpotlightCard.css";
 import LikeIt from "../component/likeItButton.jsx";
 
 const ProductInfo = (props) => {
-  const { product, clicked, userId, sellerName, sellerEmail } = props;
+  const { product, userId, sellerName, sellerEmail } = props;
 
   const handleEmailSeller = () => {
     const email = sellerEmail; // e.g., "eva@gmail.com"
@@ -62,7 +62,9 @@ const ProductInfo = (props) => {
               Condition: {product.condition}
             </li>
             <li className="font-light text-lg">Seller: {sellerName}</li>
-            <li className="font-light text-lg">Seller Rating: 4.0 ★★★★<span className="text-gray-300">★</span></li>
+            <li className="font-light text-lg">Seller Rating: 4.0 ★★★★
+              <span className="text-gray-300">★</span>
+              </li>
           </ul>
 
           <LikeIt userId={userId} itemId={product.id} />

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Products from '../Data/ProductData'
 import ProductInfo from '../component/ProductInfo'
 import CommentList from '../component/CommentList'
 import Toast from '../component/Toast';
 import useFetchData from "../component/FetchData.jsx";
 
-// ⭐ added
-import LikeIt from "../component/likeItButton";
+
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -19,10 +17,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 */
 
 export const ProductDetail = () => {
-  const [cart, setCart] = useState([]);
-  const [Comments, setComments] = useState([]);
   const [toast, setToast] = useState("");
-  const [clicked, setClicked] = useState(false);
   const Products = useFetchData();
   const { id } = useParams();
   // ⭐ get authenticated firebase user
@@ -53,10 +48,6 @@ export const ProductDetail = () => {
     return () => unsubscribe();
   }, []);
 
-  const showToast = (msg) => {
-    setToast(msg);
-    setTimeout(() => setToast(""), 2500);
-  };
 
   const product = Products.find((p) => p.id === id);
 
@@ -156,7 +147,6 @@ async function deleteComment(productId, commentId) {
   
       <section className="border-b pb-10">
       <CommentList 
-        Comments = {Comments}
         addComment = {addComment}
         product = {product}
         username = {username}

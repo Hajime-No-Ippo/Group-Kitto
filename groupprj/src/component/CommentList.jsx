@@ -102,7 +102,7 @@ const CommentList = (props) => {
                     e.preventDefault();
                     await addComment(product.id, currentUser, commentInput);
                     setCommentInput("");
-                    e.target.reset();
+                    
                   }}>
                   <div className="space-y-2">
                   <label
