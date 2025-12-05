@@ -1,44 +1,42 @@
-/* This file contains global configuration:
-   1.Tailwind CSS imports
-   2.CSS variable definitions
-   3.Global element default styles */
+/* This file has some global setup:
+   1. Tailwind basic imports
+   2. Color variables for the whole site
+   3. Simple default styles for common elements */
 
-/* Tailwind Core Imports */
+/* Tailwind base setup */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Brand Theme Variables
-   Define color scheme and design tokens
-   Usage: color: var(--primary); */
+/* Color variables for the website
+   You can use them like: color: var(--primary); */
 :root {
-  --primary: #006442; /* Primary brand color */
-  --accent-btn: #ffe552; /* Accent color for buttons */
+  --primary: #006442; /* Main brand color */
+  --accent-btn: #ffe552; /* Button highlight color */
   --text-main: #006442; /* Main text color */
-  --text-muted: #3c3c3b; /* Muted/secondary text color */
-  --bg-soft: #ffffff; /* Soft background color */
-  --nav-bg: #f9f4ec; /* Navigation background */
-  --border: rgba(0, 0, 0, 0.07); /* Border color with transparency */
+  --text-muted: #3c3c3b; /* Softer text color */
+  --bg-soft: #ffffff; /* Light background */
+  --nav-bg: #f9f4ec; /* Navigation bar background */
+  --border: rgba(0, 0, 0, 0.07); /* Soft border color */
 }
 
-/* Global Element Styles
-   Default styles applied to all instances */
+/* Basic global styles */
 @layer base {
-  /* Body defaults */
+  /* Page body style */
   body {
     background-color: var(--bg-soft);
     color: var(--text-main);
     font-family: "Poppins", sans-serif;
   }
 
-  /* Form elements - inputs, selects, textareas */
+  /* Basic style for inputs, selects, and textareas */
   input,
   select,
   textarea {
     @apply border border-[var(--border)] rounded-lg p-3;
   }
 
-  /* Select dropdown - extra padding for arrow */
+  /* Extra space on the right for the dropdown arrow */
   select {
     @apply pr-10;
   }

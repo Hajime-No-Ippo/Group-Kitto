@@ -1,39 +1,38 @@
-/* For Component Specific Styles
-   1.This file contains reusable component styles
-   2.Import this file in your components:
+/* Simple notes for this file:
+   1. Styles for small reusable UI parts
+   2. You can import this file inside your components */
 
-/* Import base configuration */
+/* Bring in base styles */
 @import "./base.css";
 
-/* typography COMPONENTS */
+/* Component styles */
 @layer components {
-  /* Main heading style */
+  /* Main page title (big text) */
   h1 {
     @apply text-[2.1rem] font-semibold text-center;
     color: var(--text-main);
   }
 
-  /* Secondary heading (when following h1) */
+  /* Smaller title right after the main one */
   h1 + h1 {
     @apply opacity-90 font-light text-[1.1rem];
     color: var(--text-muted);
   }
 
-  /* SEARCH INPUT GROUP
-     Rounded search bar with integrated button
-     Usage: Wrap input and button in .input-group */
+  /* Search bar container
+     Simple rounded box that holds input + button */
   .input-group {
     @apply max-w-[650px] mx-auto my-[26px] flex items-center bg-white rounded-[50px] border overflow-hidden;
     border-color: var(--border);
   }
 
-  /* Search input field */
+  /* Search input */
   .input-group input {
     @apply flex-1 border-0 px-[22px] py-[15px] text-base focus:outline-none;
     color: var(--text-main);
   }
 
-  /* Placeholder text style */
+  /* Placeholder inside the input */
   .input-group input::placeholder {
     @apply opacity-70;
     color: var(--text-muted);
@@ -46,47 +45,42 @@
     color: var(--primary);
   }
 
-  /* The following part is the PRODUCT CARDS
-     Reusable card component for product display
-     Features: shadow, hover animation, image padding
-     Usage: Apply .clickable-card to container */
+  /* Product card style
+     Used for showing item photos + text */
   .clickable-card {
     @apply bg-white rounded-[14px] cursor-pointer transition-all duration-200 overflow-hidden;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
   }
 
-  /* Card hover effect - lift and enhance shadow */
+  /* Card hover effect — becomes higher and clearer */
   .clickable-card:hover {
     @apply shadow-lg -translate-y-1;
   }
 
-  /* Card image - square aspect ratio with padding */
+  /* Product image inside the card */
   .clickable-card img {
     @apply w-full aspect-square object-cover;
-    padding: 12px; /* Internal padding for breathing room */
+    padding: 12px;
   }
 
-  /* Card body - text container */
+  /* Area holding the text under the image */
   .card-body {
     @apply text-center px-3 pb-3 pt-1;
   }
 
-  /* Card text - product name and details */
+  /* Text inside the card */
   .card-body p {
     @apply text-[0.9rem] font-medium m-0;
     color: var(--text-muted);
   }
 
-  /* First paragraph spacing (such as the product name) */
+  /* Extra spacing for the first line of text */
   .card-body p:first-child {
     @apply mb-1;
   }
 }
 
-/* ANIMATIONS
-   Reusable animation keyframes */
-
-/* Slide up animation - fade in/out with movement */
+/* Simple animation — moves up and fades */
 @keyframes slide-up {
   0% {
     transform: translateY(20px);
@@ -103,7 +97,7 @@
   }
 }
 
-/* Apply slide-up animation */
+/* Class to apply the animation */
 .animate-slide {
   animation: slide-up 2.2s ease forwards;
 }
