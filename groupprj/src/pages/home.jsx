@@ -23,12 +23,12 @@ export default function Home() {
 
   return (
     <>
-      {/* Simple page title */}
+      {/* main title */}
       <h1 className="text-center mt-10 font-semibold text-[var(--primary)]">
         Choose Better, Live Greener
       </h1>
 
-      {/* Small subtitle */}
+      {/* subtitle */}
       <h1 className="text-center mt-1 text-[14px] text-[var(--text-muted)]">
         Every item reused saves a piece of our planet.
       </h1>

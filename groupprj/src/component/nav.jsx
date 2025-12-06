@@ -30,7 +30,6 @@ const Nav = () => {
             GreenCycle <span className="font-normal">Market</span>
           </a>
 
-          {/* Menu links on the right side */}
           <div className="flex gap-6 text-[15px] font-normal">
             {/* Link to user profile page */}
             <a
