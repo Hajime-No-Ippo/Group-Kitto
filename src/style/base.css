@@ -3,7 +3,7 @@
    2. Color variables for the whole site
    3. Simple default styles for common elements */
 
-/* Tailwind base setup */
+/* tailwind base setup */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
